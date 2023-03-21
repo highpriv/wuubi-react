@@ -1,0 +1,15 @@
+.header {
+  list-style-type: none;
+  width: 100vw;
+  padding: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  background: rgb(236, 172, 46);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 172, 46, 1) 0%,
+    rgba(239, 186, 49, 1) 35%,
+    rgba(241, 199, 51, 1) 100%
+  );
+}
