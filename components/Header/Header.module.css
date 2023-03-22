@@ -1,7 +1,6 @@
 .header {
   list-style-type: none;
   width: 100vw;
-  padding: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
