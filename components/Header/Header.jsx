@@ -1,23 +1,9 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
-import PersonIcon from "@mui/icons-material/Person";
-import SearchIcon from "@mui/icons-material/Search";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
-import GradeIcon from "@mui/icons-material/Grade";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
-import MenuIcon from "@mui/icons-material/Menu";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
+
+import Image from "next/image";
+import Components from "../../components";
+const Icons = require("../../assets/Icons");
 
 export default function Header() {
   const [burgerMenu, setBurgerMenu] = useState(null);
@@ -42,11 +28,11 @@ export default function Header() {
   const settings = ["Giriş Yap", "Kayıt Ol"];
 
   return (
-    <AppBar position="static" className={styles.header}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Tooltip title="Open settings">
-            <IconButton
+    <Components.AppBar position="static" className={styles.header}>
+      <Components.Container maxWidth="xl">
+        <Components.Toolbar disableGutters>
+          <Components.Tooltip title="Open settings">
+            <Components.IconButton
               onClick={handleOpenBurgerMenu}
               size="large"
               edge="start"
@@ -55,12 +41,13 @@ export default function Header() {
               sx={{
                 color: "#1A1A1A",
                 fontWeight: "bold",
+                mt: 1,
               }}
             >
-              <MenuIcon />
-            </IconButton>
-          </Tooltip>
-          <Menu
+              <Icons.MenuIcon />
+            </Components.IconButton>
+          </Components.Tooltip>
+          <Components.Menu
             sx={{ mt: "45px" }}
             id="burger-menu-appbar"
             anchorEl={burgerMenu}
@@ -76,81 +63,225 @@ export default function Header() {
             open={Boolean(burgerMenu)}
             onClose={handleCloseBurgerMenu}
           >
-            <Box sx={{ width: "30vw", display: { xs: "none", md: "flex" } }}>
-              <Typography textAlign="center">Kategoriler</Typography>
+            <Components.Box
+              sx={{
+                ml: 2,
+                color: "#AAAAAA",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Components.Typography
+                textAlign="center"
+                sx={{ fontWeight: "bold", mt: 2, mb: 2 }}
+              >
+                Kategoriler
+              </Components.Typography>
+            </Components.Box>
+            <Components.Box
+              sx={{
+                width: "auto",
+                maxWidth: "30vw",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Components.Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              >
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Gündem</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Spor</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">
+                      Teknoloji ve Bilim
+                    </Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Astroloji</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Kültür ve Sanat</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Dizi ve Film</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Sağlık</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Oyun</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Yemek</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Moda</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Goygoy</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+                <Components.Grid item xs={6}>
+                  <Components.MenuItem>
+                    <Components.Typography textAlign="center">Seyahat</Components.Typography>
+                  </Components.MenuItem>{" "}
+                </Components.Grid>
+              </Components.Grid>
+            </Components.Box>
+            <Components.Divider sx={{ mt: 2 }} light />
 
-              <MenuItem>
-                <Typography textAlign="center">Kategoriler</Typography>
-              </MenuItem>
-            </Box>
-          </Menu>
+            <Components.Box
+              sx={{
+                ml: 2,
+                color: "#AAAAAA",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Components.Typography
+                textAlign="center"
+                sx={{ fontWeight: "bold", mt: 2, mb: 2 }}
+              >
+                Wuubi, tamamen ücretsiz!
+              </Components.Typography>
+            </Components.Box>
+            <Components.Box
+              sx={{
+                ml: 2,
+                color: "#AAAAAA",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Components.WuubiButton text="Hesap Oluştur" />
+              <Components.WuubiButton text="Giriş Yap" />
+            </Components.Box>
+            <Components.Divider sx={{ mt: 2, mb: 2 }} light />
+            <Components.Box
+              sx={{
+                ml: 2,
+                color: "#AAAAAA",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Components.Typography textAlign="center" sx={{ fontWeight: "bold", mb: 2 }}>
+                Sosyal Medya
+              </Components.Typography>
+            </Components.Box>
+            <Components.Box
+              sx={{
+                ml: 2,
+                color: "#AAAAAA",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Components.Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              >
+                <Components.Grid item xs={1}>
+                  <Components.IconButton>
+                    <Icons.FacebookIcon />
+                  </Components.IconButton>
+                </Components.Grid>
+                <Components.Grid item xs={1}>
+                  <Components.IconButton>
+                    <Icons.InstagramIcon />
+                  </Components.IconButton>
+                </Components.Grid>
+                <Components.Grid item xs={1}>
+                  <Components.IconButton>
+                    <Icons.TwitterIcon />
+                  </Components.IconButton>
+                </Components.Grid>
+                <Components.Grid item xs={1}>
+                  <Components.IconButton>
+                    <Icons.YouTubeIcon />
+                  </Components.IconButton>
+                </Components.Grid>
+                <Components.Grid item xs={1}>
+                  <Components.IconButton>
+                    <Icons.LinkedInIcon />
+                  </Components.IconButton>
+                </Components.Grid>
+              </Components.Grid>
+            </Components.Box>
+          </Components.Menu>
 
-          <AdbIcon />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          <Image src="/logo.png" width={100} height={30} />
 
-          <Box sx={{ flexGrow: 1, ml: 4, display: { xs: "none", md: "flex" } }}>
-            <Button
+          <Components.Box sx={{ flexGrow: 1, ml: 4, display: { xs: "none", md: "flex" } }}>
+            <Components.Button
               sx={{
                 color: "#1A1A1A",
                 fontWeight: "bold",
                 ml: 2,
               }}
-              startIcon={<AccessTimeIcon />}
+              startIcon={<Icons.AccessTimeIcon />}
             >
               Son İçerikler
-            </Button>
+            </Components.Button>
 
-            <Button
+            <Components.Button
               sx={{
                 color: "#1A1A1A",
                 fontWeight: "bold",
                 ml: 2,
               }}
-              startIcon={<TrendingUpIcon />}
+              startIcon={<Icons.TrendingUpIcon />}
             >
               Trendler
-            </Button>
+            </Components.Button>
 
-            <Button
+            <Components.Button
               sx={{
                 color: "#1A1A1A",
                 fontWeight: "bold",
                 ml: 2,
               }}
-              startIcon={<WhatshotIcon />}
+              startIcon={<Icons.WhatshotIcon />}
             >
               Sıcak İçerikler
-            </Button>
+            </Components.Button>
 
-            <Button
+            <Components.Button
               sx={{
                 color: "#1A1A1A",
                 fontWeight: "bold",
                 ml: 2,
               }}
-              startIcon={<GradeIcon />}
+              startIcon={<Icons.GradeIcon />}
             >
               Popüler
-            </Button>
-          </Box>
+            </Components.Button>
+          </Components.Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <IconButton
+          <Components.Box sx={{ flexGrow: 0 }}>
+            <Components.IconButton
               size="large"
               edge="start"
               color="inherit"
@@ -160,10 +291,10 @@ export default function Header() {
                 fontWeight: "bold",
               }}
             >
-              <SearchIcon />
-            </IconButton>
-            <Tooltip title="Open settings">
-              <IconButton
+              <Icons.SearchIcon />
+            </Components.IconButton>
+            <Components.Tooltip title="Open settings">
+              <Components.IconButton
                 onClick={handleOpenUserMenu}
                 size="large"
                 edge="start"
@@ -174,10 +305,10 @@ export default function Header() {
                   fontWeight: "bold",
                 }}
               >
-                <PersonIcon />
-              </IconButton>
-            </Tooltip>
-            <Menu
+                <Icons.PersonIcon />
+              </Components.IconButton>
+            </Components.Tooltip>
+            <Components.Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -194,14 +325,14 @@ export default function Header() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Components.MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Components.Typography textAlign="center">{setting}</Components.Typography>
+                </Components.MenuItem>
               ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Components.Menu>
+          </Components.Box>
+        </Components.Toolbar>
+      </Components.Container>
+    </Components.AppBar>
   );
 }
