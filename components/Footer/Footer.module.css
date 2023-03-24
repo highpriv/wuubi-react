@@ -4,13 +4,13 @@
   border-top: 2px solid #ff0000;
   position: absolute;
   bottom: 0;
+  margin: 0;
+  padding: 0;
   color: #fff;
-  display: flex;
-  gap: 3vw;
+  overflow: hidden;
 }
 
 .categories {
-  width: 20vw;
   padding: 2%;
   align-items: center;
   justify-content: center;
@@ -20,12 +20,15 @@
   margin: 0 auto;
 }
 .copyright {
-  width: 50vw;
   padding: 2%;
   text-align: center;
 }
 
-.socailMedia {
-  width: 10vw;
+.socialMedia {
   padding: 2%;
+}
+
+.socialMediaIcons {
+  justify-content: center;
+  align-items: center;
 }

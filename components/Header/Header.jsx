@@ -12,7 +12,6 @@ export default function Header() {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -67,7 +66,7 @@ export default function Header() {
               sx={{
                 ml: 2,
                 color: "#AAAAAA",
-                display: { xs: "none", md: "flex" },
+                display: { xs: "flex", md: "flex" },
               }}
             >
               <Components.Typography
@@ -80,8 +79,7 @@ export default function Header() {
             <Components.Box
               sx={{
                 width: "auto",
-                maxWidth: "30vw",
-                display: { xs: "none", md: "flex" },
+                maxWidth: { xs: "75vw", md: "30vw" },
               }}
             >
               <Components.Grid
@@ -89,66 +87,88 @@ export default function Header() {
                 rowSpacing={1}
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}
               >
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Gündem</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Gündem
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Spor</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Spor
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
                     <Components.Typography textAlign="center">
                       Teknoloji ve Bilim
                     </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Astroloji</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Astroloji
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Kültür ve Sanat</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Kültür ve Sanat
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Dizi ve Film</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Dizi ve Film
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Sağlık</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Sağlık
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Oyun</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Oyun
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Yemek</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Yemek
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Moda</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Moda
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Goygoy</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Goygoy
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
-                <Components.Grid item xs={6}>
+                <Components.Grid item xs={6} md={6}>
                   <Components.MenuItem>
-                    <Components.Typography textAlign="center">Seyahat</Components.Typography>
+                    <Components.Typography textAlign="center">
+                      Seyahat
+                    </Components.Typography>
                   </Components.MenuItem>{" "}
                 </Components.Grid>
               </Components.Grid>
@@ -159,12 +179,16 @@ export default function Header() {
               sx={{
                 ml: 2,
                 color: "#AAAAAA",
-                display: { xs: "none", md: "flex" },
               }}
             >
               <Components.Typography
                 textAlign="center"
-                sx={{ fontWeight: "bold", mt: 2, mb: 2 }}
+                sx={{
+                  fontWeight: "bold",
+                  mt: 2,
+                  mb: 2,
+                  textAlign: { sm: "left", md: "left" },
+                }}
               >
                 Wuubi, tamamen ücretsiz!
               </Components.Typography>
@@ -173,7 +197,6 @@ export default function Header() {
               sx={{
                 ml: 2,
                 color: "#AAAAAA",
-                display: { xs: "none", md: "flex" },
               }}
             >
               <Components.WuubiButton text="Hesap Oluştur" />
@@ -184,10 +207,15 @@ export default function Header() {
               sx={{
                 ml: 2,
                 color: "#AAAAAA",
-                display: { xs: "none", md: "flex" },
               }}
             >
-              <Components.Typography textAlign="center" sx={{ fontWeight: "bold", mb: 2 }}>
+              <Components.Typography
+                sx={{
+                  fontWeight: "bold",
+                  mb: 2,
+                  textAlign: { sm: "left", md: "left" },
+                }}
+              >
                 Sosyal Medya
               </Components.Typography>
             </Components.Box>
@@ -195,7 +223,6 @@ export default function Header() {
               sx={{
                 ml: 2,
                 color: "#AAAAAA",
-                display: { xs: "none", md: "flex" },
               }}
             >
               <Components.Grid
@@ -234,7 +261,9 @@ export default function Header() {
 
           <Image src="/logo.png" width={100} height={30} />
 
-          <Components.Box sx={{ flexGrow: 1, ml: 4, display: { xs: "none", md: "flex" } }}>
+          <Components.Box
+            sx={{ flexGrow: 1, ml: 4, display: { xs: "none", md: "flex" } }}
+          >
             <Components.Button
               sx={{
                 color: "#1A1A1A",
@@ -280,7 +309,18 @@ export default function Header() {
             </Components.Button>
           </Components.Box>
 
-          <Components.Box sx={{ flexGrow: 0 }}>
+          <Components.Box
+            sx={{
+              display: "flex",
+              float: "right",
+              p: 1,
+              m: 1,
+              flex: 1,
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
+              borderRadius: 1,
+            }}
+          >
             <Components.IconButton
               size="large"
               edge="start"
@@ -325,8 +365,13 @@ export default function Header() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Components.MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Components.Typography textAlign="center">{setting}</Components.Typography>
+                <Components.MenuItem
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Components.Typography textAlign="center">
+                    {setting}
+                  </Components.Typography>
                 </Components.MenuItem>
               ))}
             </Components.Menu>
