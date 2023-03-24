@@ -1,4 +1,6 @@
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+
 import WuubiButton from "./Button/Button";
 
 import Menu from "@mui/material/Menu";
@@ -15,4 +17,20 @@ import Tooltip from "@mui/material/Tooltip";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 
-export default { Header, WuubiButton, Menu, MenuItem, AppBar, Toolbar, Container, Typography, Box, Button, IconButton, Tooltip, Grid, Divider};
+export default {
+  Header,
+  Footer,
+  WuubiButton,
+  Menu,
+  MenuItem,
+  AppBar,
+  Toolbar,
+  Container,
+  Typography,
+  Box,
+  Button,
+  IconButton,
+  Tooltip,
+  Grid,
+  Divider,
+};
