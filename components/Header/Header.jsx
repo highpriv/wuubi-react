@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
 
-import Image from "next/image";
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
 
@@ -259,7 +258,7 @@ export default function Header() {
             </Components.Box>
           </Components.Menu>
 
-          <Image src="/logo.png" width={100} height={30} />
+          <Components.Image src="/logo.png" width={100} height={30} />
 
           <Components.Box
             sx={{ flexGrow: 1, ml: 4, display: { xs: "none", md: "flex" } }}

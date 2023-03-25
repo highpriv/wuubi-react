@@ -1,6 +1,4 @@
 import styles from "./Footer.module.css";
-
-import Image from "next/image";
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
 
@@ -10,7 +8,7 @@ export default function Footer() {
       <Components.Grid
         container
         columnSpacing={{ xs: 1, sm: 2, md: 1 }}
-        sx={{ mt: 2, mb: 2 }}
+        sx={{ mt: 2, mb: 2}}
       >
         <Components.Grid
           item

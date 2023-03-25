@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "anal": "ANALYZE=true npm run build",
+    "analyze": "ANALYZE=true npm run build",
     "build": "next build",
     "start": "next start -p 8082",
     "lint": "next lint"
