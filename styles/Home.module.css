@@ -1,5 +1,18 @@
-.test
+.wrapperMain{
+    display: flex;
+    flex-direction: row;
+}
+
+.contentArea
 {
 height: auto;
 overflow: auto;
+width:65vw;
+padding: 3%;
 }
+
+.sideBar{
+    width:35vw;
+    padding: 3%;
+}
+

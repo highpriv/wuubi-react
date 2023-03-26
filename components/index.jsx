@@ -1,8 +1,8 @@
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import Sidebar from "./Sidebar/Sidebar";
 import FeaturedPosts from "./FeaturedPosts/FeaturedPosts";
 import WuubiButton from "./Button/Button";
-
 import Menu from "@mui/material/Menu";
 import Image from "next/image";
 import MenuItem from "@mui/material/MenuItem";
@@ -30,6 +30,7 @@ export default {
   Card,
   CardActions,
   CardContent,
+  Sidebar,
   CardMedia,
   MenuItem,
   Image,

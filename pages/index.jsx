@@ -11,11 +11,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
-        <div className={styles.test} sx={{backgroundColor:'red'}}>
+      <main className={styles.wrapperMain}>
+        <div className={styles.contentArea}>
 
-   <Components.FeaturedPosts />
+        <Components.Typography variant="h2" color="#e8e8e8" sx={{pb:2}}>
+          Öne Çıkan İçerikler
+        </Components.Typography>
 
+        <Components.FeaturedPosts/>
+
+        </div>
+        <div className={styles.sideBar}>
+          <Components.Sidebar />
         </div>
       </main>
     </>
