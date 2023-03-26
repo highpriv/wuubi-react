@@ -1,0 +1,10 @@
+.boxWrapper{
+    border: 2px solid rgb(232, 232, 232);
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: #bcbcbc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

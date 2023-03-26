@@ -1,0 +1,13 @@
+.wrapperTopUsers{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap:15px;
+}
+
+.listItem{
+    background-color: #E8E8E8;
+    border-radius: 5px;
+}
+

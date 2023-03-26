@@ -6,13 +6,12 @@
 .contentArea
 {
 height: auto;
-overflow: auto;
 width:65vw;
 padding: 3%;
 }
 
 .sideBar{
-    width:35vw;
+    width:25vw;
     padding: 3%;
 }
 

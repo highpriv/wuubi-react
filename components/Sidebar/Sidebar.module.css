@@ -1,0 +1,11 @@
+.sidebarWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topUsers{
+    width: 100%;
+}

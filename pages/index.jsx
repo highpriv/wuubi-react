@@ -18,7 +18,9 @@ export default function Home() {
           Öne Çıkan İçerikler
         </Components.Typography>
 
-        <Components.FeaturedPosts/>
+       <div className={styles.featuredContents}>
+       <Components.FeaturedPosts/>
+       </div>
 
         </div>
         <div className={styles.sideBar}>
