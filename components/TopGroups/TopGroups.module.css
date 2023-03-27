@@ -1,0 +1,12 @@
+.wrapperTopGroups {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.listItem {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+}

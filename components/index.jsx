@@ -26,6 +26,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardBox from "./CardBox/CardBox";
+import TopGroups from "./TopGroups/TopGroups";
 import TopUsers from "./TopUsers/TopUsers";
 import LastPosts from "./LastPosts/LastPosts";
 import Populars from "./Sidebar/Populars/Populars";
@@ -43,6 +44,7 @@ export default {
   LastPosts,
   Menu,
   TopUsers,
+  TopGroups,
   CardBox,
   Card,
   CardActions,
