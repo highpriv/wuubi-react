@@ -1,17 +1,10 @@
-.wrapperMain{
-    display: flex;
-    flex-direction: row;
+.wrapperMain {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
 }
 
-.contentArea
-{
-height: auto;
-width:65vw;
-padding: 3%;
+.contentArea {
+  height: auto;
+  width: 100%;
 }
-
-.sideBar{
-    width:25vw;
-    padding: 3%;
-}
-

@@ -1,11 +1,13 @@
-.sidebarWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: space-between;
-    align-items: center;
+.sidebarWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 3%;
+  margin-top: 5vh;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.topUsers{
-    width: 100%;
+.topUsers {
+  width: 100%;
 }

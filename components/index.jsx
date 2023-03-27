@@ -8,11 +8,11 @@ import Image from "next/image";
 import MenuItem from "@mui/material/MenuItem";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -21,12 +21,14 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import CardBox from "./CardBox/CardBox";
 import TopUsers from "./TopUsers/TopUsers";
+import LastPosts from "./LastPosts/LastPosts";
+import Populars from "./Sidebar/Populars/Populars";
 
 export default {
   Header,
@@ -38,6 +40,7 @@ export default {
   ListItemText,
   WuubiButton,
   FeaturedPosts,
+  LastPosts,
   Menu,
   TopUsers,
   CardBox,
@@ -45,6 +48,7 @@ export default {
   CardActions,
   CardContent,
   Sidebar,
+  Populars,
   CardMedia,
   MenuItem,
   Image,

@@ -1,16 +1,16 @@
-import styles from "./FeaturedPosts.module.css";
+import styles from "./LastPosts.module.css";
 
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
-export default function FeaturedPosts() {
+export default function LastPosts() {
   return (
     <Components.Grid
       container
-      rowSpacing={3}
+      rowSpacing={1}
       columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       sx={{ padding: "10px" }}
     >
-      <Components.Grid item xs={12} md={6}>
+      <Components.Grid item xs={6} md={6}>
         <Components.Card
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
@@ -50,7 +50,7 @@ export default function FeaturedPosts() {
         </Components.Card>
       </Components.Grid>
 
-      <Components.Grid item xs={12} md={6}>
+      <Components.Grid item xs={6} md={6}>
         <Components.Card
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
@@ -90,7 +90,7 @@ export default function FeaturedPosts() {
         </Components.Card>
       </Components.Grid>
 
-      <Components.Grid item xs={12} md={6}>
+      <Components.Grid item xs={6} md={6}>
         <Components.Card
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
@@ -130,7 +130,7 @@ export default function FeaturedPosts() {
         </Components.Card>
       </Components.Grid>
 
-      <Components.Grid item xs={12} md={6}>
+      <Components.Grid item xs={6} md={6}>
         <Components.Card
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
