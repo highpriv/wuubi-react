@@ -1,0 +1,14 @@
+.wrapperMain {
+  width: 100%;
+}
+
+.contentArea {
+  height: auto;
+  width: 100%;
+  background-color: green;
+}
+
+.contentImg {
+  width: 100%;
+  border-bottom: 2px solid #ff0000;
+}

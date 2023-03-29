@@ -15,7 +15,7 @@ export default function FeaturedPosts() {
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
           <Components.CardMedia
-            sx={{ height: 140, borderRadius: 1 }}
+            sx={{ height: 250, borderRadius: 1 }}
             image="https://picsum.photos/300/600"
             title="green iguana"
           />
@@ -55,7 +55,7 @@ export default function FeaturedPosts() {
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
           <Components.CardMedia
-            sx={{ height: 140, borderRadius: 1 }}
+            sx={{ height: 250, borderRadius: 1 }}
             image="https://picsum.photos/300/600"
             title="green iguana"
           />
@@ -95,7 +95,7 @@ export default function FeaturedPosts() {
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
           <Components.CardMedia
-            sx={{ height: 140, borderRadius: 1 }}
+            sx={{ height: 250, borderRadius: 1 }}
             image="https://picsum.photos/300/600"
             title="green iguana"
           />
@@ -135,7 +135,7 @@ export default function FeaturedPosts() {
           sx={{ width: "100%", boxShadow: "none", border: 0, borderRadius: 0 }}
         >
           <Components.CardMedia
-            sx={{ height: 140, borderRadius: 1 }}
+            sx={{ height: 250, borderRadius: 1 }}
             image="https://picsum.photos/300/600"
             title="green iguana"
           />
