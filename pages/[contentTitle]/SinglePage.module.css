@@ -10,41 +10,26 @@
 
 .contentImgWrapper {
   position: relative;
-  text-align: center;
-  color: #232323;
-}
-
-.contentImg {
-  width: 100%;
-}
-
-.contentTitle {
-  text-align: left;
   color: #f1f1f1;
   width: 100%;
-  height: 100%;
-  display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 60vh;
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(29, 29, 29, 0.4094231442577031) 37%,
-    rgba(29, 29, 29, 0) 60%,
-    rgba(29, 29, 29, 0) 100%
-  );
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(29, 29, 29, 0.4094231442577031) 37%,
+      rgba(29, 29, 29, 0) 60%,
+      rgba(29, 29, 29, 0) 100%
+    ),
+    url(https://picsum.photos/1200/600);
 }
 
-.contentTexts {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.contentHeader {
   position: absolute;
-  top: 20%;
+  width: 60%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -6,39 +6,20 @@ export default function singlePage() {
   return (
     <main className={styles.wrapperMain}>
       <div className={styles.contentImgWrapper}>
-        <div className={styles.imgOverlay}>
-          <Components.Image
-            className={styles.contentImg}
-            src="https://picsum.photos/1200/600"
-            width={1200}
-            height={600}
-          />
-        </div>
-
-        <div className={styles.contentTitle}>
-          <div className={styles.contentTexts}>
-            <Components.Typography
-              variant="subtitle1"
-              sx={{
-                fontWeight: "bold",
-              }}
-            >
-              Teknoloji: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </Components.Typography>
-
-            <Components.Typography variant="h2" sx={{ fontWeight: "bold" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </Components.Typography>
-            <Components.Typography
-              variant="subtitle1"
-              sx={{ fontWeight: "bold" }}
-            >
-              Suspendisse potenti. Quisque gravida auctor justo vitae sodales.
-              Duis tincidunt tincidunt auctor. Vivamus efficitur nisi sed diam
-              sollicitudin fringilla. Aenean sit amet scelerisque nisl, eget
-              placerat nisl.
-            </Components.Typography>
+        <div className={styles.contentHeader}>
+          <div className={styles.breadCrumb}>
+            Teknoloji {">"} Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit
           </div>
+          <div className={styles.title}>
+            <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+          </div>
+          <p className={styles.summary}>
+            {" "}
+            In ut scelerisque urna. Curabitur sollicitudin leo elit, id laoreet
+            ligula ornare in. Sed sit amet blandit mi. Morbi malesuada mollis
+            sapien sed finibus.
+          </p>
         </div>
       </div>
 
