@@ -16,27 +16,29 @@ export default function singlePage() {
         </div>
 
         <div className={styles.contentTitle}>
-          <Components.Typography
-            variant="h2"
-            sx={{ fontWeight: "bold" }}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </Components.Typography>
-        </div>
+          <div className={styles.contentTexts}>
+            <Components.Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: "bold",
+              }}
+            >
+              Teknoloji: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </Components.Typography>
 
-        <div className={styles.contentInfo}>
-          <Components.Typography
-            variant="subtitle1"
-            sx={{ fontWeight: "bold" }}
-          >
-            <b>Paylaşan:</b> @canberkberen1
-          </Components.Typography>
-          <Components.Typography
-            variant="subtitle1"
-            sx={{ fontWeight: "bold" }}
-          >
-            <b>Yayınlanma Tarihi:</b> 22.03.2023 10:30
-          </Components.Typography>
+            <Components.Typography variant="h2" sx={{ fontWeight: "bold" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </Components.Typography>
+            <Components.Typography
+              variant="subtitle1"
+              sx={{ fontWeight: "bold" }}
+            >
+              Suspendisse potenti. Quisque gravida auctor justo vitae sodales.
+              Duis tincidunt tincidunt auctor. Vivamus efficitur nisi sed diam
+              sollicitudin fringilla. Aenean sit amet scelerisque nisl, eget
+              placerat nisl.
+            </Components.Typography>
+          </div>
         </div>
       </div>
 
