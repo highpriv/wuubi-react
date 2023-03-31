@@ -7,11 +7,11 @@ export default function singlePage() {
     <main className={styles.wrapperMain}>
       <div className={styles.contentImgWrapper}>
         <div className={styles.contentHeader}>
-          <div className={styles.breadCrumb}>
-            Teknoloji {">"} Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit
-          </div>
           <div className={styles.title}>
+            <div className={styles.breadCrumb}>
+              Teknoloji {">"} Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit
+            </div>
             <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
             <p className={styles.summary}>
               {" "}
