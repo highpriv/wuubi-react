@@ -13,13 +13,23 @@ export default function singlePage() {
           </div>
           <div className={styles.title}>
             <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+            <p className={styles.summary}>
+              {" "}
+              In ut scelerisque urna. Curabitur sollicitudin leo elit, id
+              laoreet ligula ornare in. Sed sit amet blandit mi. Morbi malesuada
+              mollis sapien sed finibus.
+            </p>
+            <div className={styles.infos}>
+              <div className={styles.author}>
+                <Components.Avatar
+                  alt="Remy Sharp"
+                  src="/static/images/avatar/1.jpg"
+                />
+                <span>canberkberen</span>
+                <span className={styles.contentDate}>30-03-2023</span>
+              </div>
+            </div>
           </div>
-          <p className={styles.summary}>
-            {" "}
-            In ut scelerisque urna. Curabitur sollicitudin leo elit, id laoreet
-            ligula ornare in. Sed sit amet blandit mi. Morbi malesuada mollis
-            sapien sed finibus.
-          </p>
         </div>
       </div>
 
