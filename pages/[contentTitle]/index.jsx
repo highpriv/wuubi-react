@@ -7,12 +7,17 @@ export default function singlePage() {
     <main className={styles.wrapperMain}>
       <div className={styles.contentImgWrapper}>
         <div className={styles.contentHeader}>
-          <div className={styles.title}>
+          <div className={styles.contentInfo}>
             <div className={styles.breadCrumb}>
-              Teknoloji {">"} Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit
+              <a> Teknoloji </a>
+              {">"}{" "}
+              <a>Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
             </div>
-            <h2> Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+            <h2 className={styles.contentTitle}>
+              {" "}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum condimentum erat dapibus
+            </h2>
             <p className={styles.summary}>
               {" "}
               In ut scelerisque urna. Curabitur sollicitudin leo elit, id
@@ -25,8 +30,13 @@ export default function singlePage() {
                   alt="Remy Sharp"
                   src="/static/images/avatar/1.jpg"
                 />
-                <span>canberkberen</span>
-                <span className={styles.contentDate}>30-03-2023</span>
+                <span>
+                  <b>@canberkberen</b> tarafından <b>30-03-2023</b> tarihinde
+                  oluşturuldu
+                </span>
+                <span className={styles.contentReadTime}>
+                  <Icons.AccessTimeIcon /> ~10 dakika
+                </span>
               </div>
             </div>
           </div>

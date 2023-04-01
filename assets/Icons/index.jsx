@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
+import BoltIcon from "@mui/icons-material/Bolt";
 
 export {
   FacebookIcon,
@@ -28,6 +29,7 @@ export {
   TrendingUpIcon,
   WhatshotIcon,
   GradeIcon,
+  BoltIcon,
   MenuIcon,
   SwapVertIcon,
 };
