@@ -30,6 +30,12 @@ import TopGroups from "./TopGroups/TopGroups";
 import TopUsers from "./TopUsers/TopUsers";
 import LastPosts from "./LastPosts/LastPosts";
 import Populars from "./Sidebar/Populars/Populars";
+import Comment from "./Comment/Comment";
+
+/// ToDo: Add all components here. That way, you can import all components from one file.
+/// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
+/// For example, i don't want to import all components in Home.
+/// I just want to import components that i need in index.jsx.
 
 export default {
   Header,
@@ -42,6 +48,7 @@ export default {
   WuubiButton,
   FeaturedPosts,
   LastPosts,
+  Comment,
   Menu,
   TopUsers,
   TopGroups,
