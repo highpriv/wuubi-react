@@ -11,3 +11,10 @@
 .topUsers {
   width: 100%;
 }
+
+.is-sticky {
+  position: fixed;
+  top: 10px;
+  z-index: 999;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+}

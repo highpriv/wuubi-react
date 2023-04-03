@@ -1,8 +1,38 @@
 import styles from "./Sidebar.module.css";
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
+import { useState, useEffect } from "react";
 
 export default function Sidebar() {
+  const [sidebarWidth, setSidebarWidth] = useState(undefined);
+  const [sidebarTop, setSidebarTop] = useState(undefined);
+
+  useEffect(() => {
+    const sidebarEl = document
+      .querySelector(".suggestedPosts")
+      .getBoundingClientRect();
+    setSidebarWidth(sidebarEl.width);
+    setSidebarTop(sidebarEl.top);
+  }, []);
+
+  useEffect(() => {
+    if (!sidebarTop) return;
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  }, [sidebarTop]);
+
+  const isSticky = (e) => {
+    const sidebarEl = document.querySelector(".suggestedPosts");
+    const scrollTop = window.scrollY;
+    if (scrollTop >= sidebarTop - 10) {
+      sidebarEl.classList.add(styles["is-sticky"]);
+    } else {
+      sidebarEl.classList.remove(styles["is-sticky"]);
+    }
+  };
+
   return (
     <div className={styles.sidebarWrapper}>
       <Components.CardBox
@@ -21,6 +51,10 @@ export default function Sidebar() {
 
       <div className={styles.topUsers}>
         <Components.Populars />
+      </div>
+
+      <div className="suggestedPosts" style={{ width: sidebarWidth }}>
+        <Components.SuggestedPosts />
       </div>
     </div>
   );

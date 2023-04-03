@@ -29,6 +29,7 @@ import CardBox from "./CardBox/CardBox";
 import TopGroups from "./TopGroups/TopGroups";
 import TopUsers from "./TopUsers/TopUsers";
 import LastPosts from "./LastPosts/LastPosts";
+import SuggestedPosts from "./SuggestedPosts/SuggestedPosts";
 import Populars from "./Sidebar/Populars/Populars";
 import Comment from "./Comment/Comment";
 
@@ -48,6 +49,7 @@ export default {
   WuubiButton,
   FeaturedPosts,
   LastPosts,
+  SuggestedPosts,
   Comment,
   Menu,
   TopUsers,
