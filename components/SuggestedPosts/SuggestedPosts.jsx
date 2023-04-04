@@ -29,28 +29,6 @@ export default function SuggestedPosts() {
         >
           <Components.CardMedia
             sx={{ width: 400, height: 200, borderRadius: 1 }}
-            image="https://picsum.photos/600/600"
-            title="green iguana"
-          />
-          <Components.CardContent>
-            <Components.Typography gutterBottom variant="body1" component="div">
-              Lizard
-            </Components.Typography>
-          </Components.CardContent>
-        </Components.Card>
-      </Components.Grid>
-
-      <Components.Grid item xs={12} md={12}>
-        <Components.Card
-          sx={{
-            width: "100%",
-            boxShadow: "none",
-            border: 0,
-            borderRadius: 0,
-          }}
-        >
-          <Components.CardMedia
-            sx={{ width: 400, height: 200, borderRadius: 1 }}
             image="https://picsum.photos/300/600"
             title="green iguana"
           />

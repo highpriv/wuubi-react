@@ -14,7 +14,8 @@
 
 .is-sticky {
   position: fixed;
-  top: 10px;
-  z-index: 999;
+  overflow: auto;
+  top: 0;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  height: 65vh;
 }
