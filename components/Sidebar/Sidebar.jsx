@@ -53,7 +53,7 @@ export default function Sidebar() {
         <Components.Populars />
       </div>
 
-      <div className="suggestedPosts" style={{ width: sidebarWidth }}>
+      <div className="suggestedPosts">
         <Components.SuggestedPosts />
       </div>
     </div>

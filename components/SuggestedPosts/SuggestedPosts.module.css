@@ -1,3 +1,12 @@
 .wrapperSuggestedContents {
   width: 100%;
+  max-width: 100%;
+  background-color: red;
+  height: 100%;
+}
+
+@media screen and (max-height: 700px), screen and (max-width: 575px) {
+  .wrapperSuggestedContents {
+    height: 25.5rem;
+  }
 }
