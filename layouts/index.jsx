@@ -8,7 +8,6 @@ const Layout = ({ children }) => {
       {children}
 
       <Components.Footer />
-
     </div>
   );
 };

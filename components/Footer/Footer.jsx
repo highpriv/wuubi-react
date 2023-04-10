@@ -4,11 +4,11 @@ const Icons = require("../../assets/Icons");
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
+    <div className={styles.footer} id="footer">
       <Components.Grid
         container
         columnSpacing={{ xs: 1, sm: 2, md: 1 }}
-        sx={{ mt: 2, mb: 2}}
+        sx={{ mt: 2, mb: 2 }}
       >
         <Components.Grid
           item

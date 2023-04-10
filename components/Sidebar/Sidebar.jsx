@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 export default function Sidebar() {
   const [sidebarWidth, setSidebarWidth] = useState(undefined);
   const [sidebarTop, setSidebarTop] = useState(undefined);
+  const [contentEnd, setContentEnd] = useState(undefined);
 
   useEffect(() => {
     const sidebarEl = document
@@ -14,6 +15,13 @@ export default function Sidebar() {
     setSidebarWidth(sidebarEl.width);
     setSidebarTop(sidebarEl.top);
   }, []);
+
+  useEffect(() => {
+    const documentEnd = document
+      .querySelector("#footer")
+      .getBoundingClientRect().top;
+    setContentEnd(documentEnd);
+  });
 
   useEffect(() => {
     if (!sidebarTop) return;
@@ -26,9 +34,15 @@ export default function Sidebar() {
   const isSticky = (e) => {
     const sidebarEl = document.querySelector(".suggestedPosts");
     const scrollTop = window.scrollY;
+    let ratioHeight = scrollTop / contentEnd;
+    console.log("ratio", ratioHeight);
+    console.log("sc", scrollTop);
+    console.log("end", contentEnd);
+
     if (scrollTop >= sidebarTop - 10) {
       sidebarEl.classList.add(styles["is-sticky"]);
-    } else {
+    }
+    if (ratioHeight > 0.8 || scrollTop < sidebarTop - 10) {
       sidebarEl.classList.remove(styles["is-sticky"]);
     }
   };
