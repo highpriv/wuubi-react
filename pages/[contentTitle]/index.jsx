@@ -4,7 +4,7 @@ const Icons = require("../../assets/Icons");
 
 export default function singlePage() {
   return (
-    <main className={styles.wrapperMain}>
+    <main className={styles.wrapperMain} id="container">
       <div className={styles.contentImgWrapper}>
         <div className={styles.contentHeader}>
           <div className={styles.contentInfo}>
