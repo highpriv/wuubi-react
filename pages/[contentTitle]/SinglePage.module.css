@@ -3,9 +3,10 @@
 }
 
 .contentArea {
+  display: inline-block;
   height: auto;
   width: 100%;
-  padding: 2%;
+  max-width: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased !important;
   -moz-font-smoothing: antialiased !important;
@@ -131,4 +132,9 @@
   padding: 5px;
   border-radius: 3px;
   text-shadow: none;
+}
+
+.commentSection {
+  width: 100%;
+  display: block;
 }

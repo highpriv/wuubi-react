@@ -28,13 +28,13 @@ export default function Sidebar() {
       .getBoundingClientRect().top;
 
     const mainHeight = document
-      .querySelector("#container")
-      .getBoundingClientRect().height;
+      ?.querySelector("#container")
+      ?.getBoundingClientRect().height;
 
     setFooterEnd(documentEnd);
     setFooterTop(documentTop);
     setDocumentHeight(mainHeight);
-  });
+  }, []);
 
   useEffect(() => {
     if (!sidebarTop) return;
@@ -48,13 +48,12 @@ export default function Sidebar() {
     const sidebarEl = document.querySelector(".suggestedPosts");
     const scrollTop = window.scrollY;
     let footerHeight = footerEnd - footerTop;
-    //console.log("ratio", ratioHeight);
-    console.log("sc", footerHeight, documentHeight);
+    let containerHeight = documentHeight - footerHeight;
 
     if (scrollTop >= sidebarTop - 10) {
       sidebarEl.classList.add(styles["is-sticky"]);
     }
-    if (scrollTop > footerEnd - 300 || scrollTop < sidebarTop - 10) {
+    if (scrollTop > containerHeight - 100 || scrollTop < sidebarTop - 10) {
       sidebarEl.classList.remove(styles["is-sticky"]);
     }
   };

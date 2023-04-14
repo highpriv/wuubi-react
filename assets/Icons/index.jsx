@@ -14,7 +14,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 import BoltIcon from "@mui/icons-material/Bolt";
-
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import SendIcon from "@mui/icons-material/Send";
 export {
   FacebookIcon,
   InstagramIcon,
@@ -32,4 +34,7 @@ export {
   BoltIcon,
   MenuIcon,
   SwapVertIcon,
+  ThumbUpOffAltIcon,
+  ThumbDownOffAltIcon,
+  SendIcon,
 };

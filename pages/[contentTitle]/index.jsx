@@ -45,8 +45,8 @@ export default function singlePage() {
 
       <Components.Grid
         container
-        columnSpacing={{ xs: 1, sm: 2, md: 1 }}
-        sx={{ mt: 2, mb: 2 }}
+        columnSpacing={{ xs: 1, sm: 5, md: 5 }}
+        sx={{ mt: 2, mb: 2, padding: "30px" }}
       >
         <Components.Grid
           item
@@ -55,6 +55,11 @@ export default function singlePage() {
           lg={9}
           sx={{
             display: "flex",
+            width: "100%",
+            flexDirection: "column",
+            wordWrap: "break-word",
+            whiteSpace: "pre-wrap",
+            wordBreak: "break-word",
           }}
         >
           <div className={styles.contentArea}>
@@ -178,6 +183,10 @@ export default function singlePage() {
             elit tristique lobortis. Donec dolor nulla, imperdiet sit amet ex
             ullamcorper, porttitor dignissim lectus. Duis feugiat placerat
             auctor.
+          </div>
+          <Components.Divider sx={{ mt: 5, mb: 5 }} />
+          <div className={styles.commentSection}>
+            <Components.Comment />
           </div>
         </Components.Grid>
 
