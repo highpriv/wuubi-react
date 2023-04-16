@@ -34,6 +34,7 @@ import Populars from "./Sidebar/Populars/Populars";
 import Comment from "./Comment/Comment";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
+import HotPosts from "./HotPosts/HotPosts";
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
 /// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
@@ -77,4 +78,5 @@ export default {
   Divider,
   Chip,
   TextField,
+  HotPosts,
 };
