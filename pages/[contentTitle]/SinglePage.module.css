@@ -69,6 +69,12 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .sideBar {
+    display: none !important;
+  }
+}
+
 @media (min-width: 50px) and (max-width: 350px) {
   .breadCrumb {
     display: none !important;
@@ -137,4 +143,8 @@
 .commentSection {
   width: 100%;
   display: block;
+}
+
+.HotPostsSection {
+  margin-top: 10%;
 }

@@ -188,6 +188,7 @@ export default function singlePage() {
           <div className={styles.commentSection}>
             <Components.Comment />
           </div>
+
           <div className={styles.HotPostsSection}>
             <Components.HotPosts />
           </div>

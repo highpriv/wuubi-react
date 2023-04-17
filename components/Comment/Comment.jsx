@@ -14,30 +14,53 @@ export default function Comment() {
         Kullanıcı Yorumları
       </Components.Typography>
       <Components.List sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <Components.ListItem alignItems="flex-start">
-          <Components.ListItemAvatar>
-            <Components.Avatar
-              alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
-            />
-          </Components.ListItemAvatar>
-          <Components.ListItemText
-            primary="Brunch this weekend?"
-            secondary={
-              <React.Fragment>
-                <Components.Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Ali Connors
-                </Components.Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </React.Fragment>
-            }
-          />
-          <div style={{ marginTop: "10px" }}>
+        <Components.Grid
+          container
+          columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "10px",
+          }}
+        >
+          <Components.Grid item xs={12} md={10} lg={10}>
+            <Components.ListItem alignItems="flex-start">
+              <Components.ListItemAvatar>
+                <Components.Avatar
+                  alt="Cindy Baker"
+                  src="/static/images/avatar/3.jpg"
+                />
+              </Components.ListItemAvatar>
+              <Components.ListItemText
+                primary="Oui Oui"
+                secondary={
+                  <React.Fragment>
+                    <Components.Typography
+                      sx={{ display: "inline" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      Sandra Adams
+                    </Components.Typography>
+                    {" — Do you have Paris recommendations? Have you ever…"}
+                  </React.Fragment>
+                }
+              />
+            </Components.ListItem>
+          </Components.Grid>
+
+          <Components.Grid
+            item
+            xs={12}
+            md={2}
+            lg={2}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
             <Components.Chip
               variant="outlined"
               color="success"
@@ -54,33 +77,58 @@ export default function Comment() {
               icon={<Icons.ThumbDownOffAltIcon />}
               sx={{ ml: 1 }}
             />
-          </div>
-        </Components.ListItem>
-        <Components.Divider variant="inset" component="li" />
-        <Components.ListItem alignItems="flex-start">
-          <Components.ListItemAvatar>
-            <Components.Avatar
-              alt="Travis Howard"
-              src="/static/images/avatar/2.jpg"
-            />
-          </Components.ListItemAvatar>
-          <Components.ListItemText
-            primary="Summer BBQ"
-            secondary={
-              <React.Fragment>
-                <Components.Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  to Scott, Alex, Jennifer
-                </Components.Typography>
-                {" — Wish I could come, but I'm out of town this…"}
-              </React.Fragment>
-            }
-          />
-          <div style={{ marginTop: "10px" }}>
+          </Components.Grid>
+        </Components.Grid>
+
+        <Components.Divider component="li" />
+
+        <Components.Grid
+          container
+          columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "10px",
+          }}
+        >
+          <Components.Grid item xs={12} md={10} lg={10}>
+            <Components.ListItem alignItems="flex-start">
+              <Components.ListItemAvatar>
+                <Components.Avatar
+                  alt="Cindy Baker"
+                  src="/static/images/avatar/3.jpg"
+                />
+              </Components.ListItemAvatar>
+              <Components.ListItemText
+                primary="Oui Oui"
+                secondary={
+                  <React.Fragment>
+                    <Components.Typography
+                      sx={{ display: "inline" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      Sandra Adams
+                    </Components.Typography>
+                    {" — Do you have Paris recommendations? Have you ever…"}
+                  </React.Fragment>
+                }
+              />
+            </Components.ListItem>
+          </Components.Grid>
+
+          <Components.Grid
+            item
+            xs={12}
+            md={2}
+            lg={2}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
             <Components.Chip
               variant="outlined"
               color="success"
@@ -97,33 +145,57 @@ export default function Comment() {
               icon={<Icons.ThumbDownOffAltIcon />}
               sx={{ ml: 1 }}
             />
-          </div>
-        </Components.ListItem>
-        <Components.Divider variant="inset" component="li" />
-        <Components.ListItem alignItems="flex-start">
-          <Components.ListItemAvatar>
-            <Components.Avatar
-              alt="Cindy Baker"
-              src="/static/images/avatar/3.jpg"
-            />
-          </Components.ListItemAvatar>
-          <Components.ListItemText
-            primary="Oui Oui"
-            secondary={
-              <React.Fragment>
-                <Components.Typography
-                  sx={{ display: "inline" }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Sandra Adams
-                </Components.Typography>
-                {" — Do you have Paris recommendations? Have you ever…"}
-              </React.Fragment>
-            }
-          />
-          <div style={{ marginTop: "10px" }}>
+          </Components.Grid>
+        </Components.Grid>
+
+        <Components.Divider component="li" />
+        <Components.Grid
+          container
+          columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "10px",
+          }}
+        >
+          <Components.Grid item xs={12} md={10} lg={10}>
+            <Components.ListItem alignItems="flex-start">
+              <Components.ListItemAvatar>
+                <Components.Avatar
+                  alt="Cindy Baker"
+                  src="/static/images/avatar/3.jpg"
+                />
+              </Components.ListItemAvatar>
+              <Components.ListItemText
+                primary="Oui Oui"
+                secondary={
+                  <React.Fragment>
+                    <Components.Typography
+                      sx={{ display: "inline" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      Sandra Adams
+                    </Components.Typography>
+                    {" — Do you have Paris recommendations? Have you ever…"}
+                  </React.Fragment>
+                }
+              />
+            </Components.ListItem>
+          </Components.Grid>
+
+          <Components.Grid
+            item
+            xs={12}
+            md={2}
+            lg={2}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
             <Components.Chip
               variant="outlined"
               color="success"
@@ -140,8 +212,8 @@ export default function Comment() {
               icon={<Icons.ThumbDownOffAltIcon />}
               sx={{ ml: 1 }}
             />
-          </div>
-        </Components.ListItem>
+          </Components.Grid>
+        </Components.Grid>
       </Components.List>
       <Components.TextField
         fullWidth
