@@ -1,0 +1,37 @@
+.wrapperLogin {
+  margin-top: 3%;
+}
+
+.title,
+.subTitle {
+  text-align: center;
+}
+.containerForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 0 10% 0;
+}
+
+.input {
+  width: 30vw;
+  display: flex;
+  margin-top: 3%;
+}
+
+.button {
+  margin-top: 3%;
+  padding: 2%;
+}
+
+.forgottenPw {
+  margin-top: 2%;
+  text-align: center;
+}
+
+.link {
+  color: #e8e8e8 !important;
+}
