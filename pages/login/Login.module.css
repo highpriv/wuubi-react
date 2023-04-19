@@ -1,3 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5% 0 5% 0;
+  gap: 12%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.imgSide {
+  background-image: url("../../public/img/login-bg.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 60vh;
+  width: 35vw;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgSideText {
+  width: 100%;
+  padding: 5% 1% 5% 1%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.imgSideText h6 {
+  opacity: 1;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
 .wrapperLogin {
   margin-top: 3%;
 }
@@ -28,10 +68,12 @@
 }
 
 .forgottenPw {
+  display: flex;
   margin-top: 2%;
-  text-align: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .link {
-  color: #e8e8e8 !important;
+  color: #bfbfbf !important;
 }

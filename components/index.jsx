@@ -37,6 +37,8 @@ import TextField from "@mui/material/TextField";
 import HotPosts from "./HotPosts/HotPosts";
 import FormControl from "@mui/material/FormControl";
 import Link from "next/link";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
 /// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
@@ -83,4 +85,6 @@ export default {
   HotPosts,
   FormControl,
   Link,
+  Checkbox,
+  FormControlLabel,
 };
