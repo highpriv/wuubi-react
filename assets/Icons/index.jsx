@@ -17,6 +17,11 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import SendIcon from "@mui/icons-material/Send";
+import GoogleIcon from "@mui/icons-material/Google";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 export {
   FacebookIcon,
   InstagramIcon,
@@ -37,4 +42,9 @@ export {
   ThumbUpOffAltIcon,
   ThumbDownOffAltIcon,
   SendIcon,
+  GoogleIcon,
+  EmojiPeopleIcon,
+  Visibility,
+  VisibilityOff,
+  AlternateEmailIcon,
 };

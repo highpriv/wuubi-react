@@ -1,17 +1,30 @@
+import { useState } from "react";
 import styles from "./Login.module.css";
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
 
 export default function loginPage() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
     <div className={styles.container}>
       <div className={styles.wrapperLogin}>
+        <span className={styles.greetingIcon}>
+          <Icons.EmojiPeopleIcon
+            sx={{ fontSize: "54px", marginBottom: "10px" }}
+          />
+        </span>
         <Components.Typography
           variant="h4"
           className={styles.title}
           color="#2d2d2d"
         >
-          Giriş Yap{" "}
+          Merhaba,{" "}
         </Components.Typography>
         <Components.Typography
           variant="body1"
@@ -24,33 +37,62 @@ export default function loginPage() {
           </Components.Link>
         </Components.Typography>
         <div className={styles.containerForm}>
-          <Components.FormControl>
-            <Components.TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-              className={styles.input}
-            />
-            <Components.TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-              className={styles.input}
-            />
-
+          <Components.FormControl className={styles.innerForm}>
+            <Components.FormControl sx={{ marginTop: "5%" }}>
+              <Components.InputLabel htmlFor="outlined-adornment-email">
+                Email
+              </Components.InputLabel>
+              <Components.OutlinedInput
+                id="outlined-adornment-email"
+                label="Email"
+                variant="outlined"
+                endAdornment={
+                  <Components.InputAdornment position="end">
+                    <Icons.AlternateEmailIcon />
+                  </Components.InputAdornment>
+                }
+                className={styles.input}
+              />
+            </Components.FormControl>
+            <Components.FormControl sx={{ marginTop: "5%" }}>
+              <Components.InputLabel htmlFor="outlined-adornment-password">
+                Password
+              </Components.InputLabel>
+              <Components.OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <Components.InputAdornment position="end">
+                    <Components.IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? (
+                        <Icons.VisibilityOff />
+                      ) : (
+                        <Icons.Visibility />
+                      )}
+                    </Components.IconButton>
+                  </Components.InputAdornment>
+                }
+                label="Password"
+              />
+            </Components.FormControl>
             <Components.Typography
               variant="body1"
               className={styles.forgottenPw}
             >
+              <Components.Link href="/reset-password" className={styles.link}>
+                Şifremi Unuttum
+              </Components.Link>
               <span>
                 <Components.FormControlLabel
                   control={<Components.Checkbox defaultChecked />}
                   label="Beni Hatırla"
                 />
               </span>
-              <Components.Link href="/reset-password" className={styles.link}>
-                Şifremi Unuttum
-              </Components.Link>
             </Components.Typography>
             <Components.Button
               variant="contained"
@@ -62,18 +104,29 @@ export default function loginPage() {
             <Components.Button
               variant="outlined"
               color="primary"
-              className={styles.button}
+              sx={{ borderRadius: "20px", padding: "2%" }}
             >
               Kayıt Ol
             </Components.Button>
+            <Components.Divider sx={{ mt: 5, mb: 5 }} />
+
+            <Components.Button
+              variant="outlined"
+              color="primary"
+              sx={{ borderRadius: "20px", padding: "2%" }}
+              startIcon={<Icons.GoogleIcon />}
+            >
+              Google ile giriş yap
+            </Components.Button>
+            <Components.Button
+              variant="outlined"
+              color="primary"
+              sx={{ borderRadius: "20px", padding: "2%", marginTop: "3%" }}
+              startIcon={<Icons.FacebookIcon />}
+            >
+              Facebook ile giriş yap
+            </Components.Button>
           </Components.FormControl>
-        </div>
-      </div>
-      <div className={styles.imgSide}>
-        <div className={styles.imgSideText}>
-          <Components.Typography variant="h6" color="#e8e8e8">
-            Her zaman ve tamamen ücretsiz
-          </Components.Typography>
         </div>
       </div>
     </div>
