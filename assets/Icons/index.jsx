@@ -22,6 +22,7 @@ import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import ExploreIcon from "@mui/icons-material/Explore";
 export {
   FacebookIcon,
   InstagramIcon,
@@ -47,4 +48,5 @@ export {
   Visibility,
   VisibilityOff,
   AlternateEmailIcon,
+  ExploreIcon,
 };

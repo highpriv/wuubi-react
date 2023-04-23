@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5% 0 5% 0;
+  gap: 12%;
+  width: 100%;
+  margin: 0 auto;
+  background: url("../../public/img/login-bg-2.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.wrapperLogin {
+  margin-top: 3%;
+  background-color: white;
+  padding: 5%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 30vw;
+}
+
+/** Responsive width of wrapperLogin */
+
+@media screen and (max-width: 1024px) {
+  .wrapperLogin {
+    width: 80% !important;
+  }
+}
+
+.greetingIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title,
+.subTitle {
+  text-align: center;
+}
+.containerForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.innerForm {
+  width: 100%;
+}
+
+.button {
+  margin: 3% 0 3% 0;
+  padding: 2%;
+  background-color: rgb(37, 37, 37);
+  border-radius: 20px;
+}
+
+.forgottenPw {
+  display: flex;
+  margin-top: 2%;
+  flex-direction: column;
+  gap: 2%;
+}
+
+.link {
+  color: #bfbfbf !important;
+  width: 100%;
+  text-align: end;
+}

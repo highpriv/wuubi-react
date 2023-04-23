@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  padding: 20vh 0 10vh 0;
+  background-color: #d8d8d8;
+}
+
+.coverImage {
+  width: 100%;
+  height: 40vh;
+  background-size: cover;
+  background-image: url("https://picsum.photos/1200/500");
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.wrapperProfile {
+  width: 95vw;
+  position: relative;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 5px;
+  min-height: 150px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.userAvatar {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.userSummary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 13vh;
+}
+
+.bio {
+  padding: 10px;
+  width: 30vw;
+  text-align: center;
+}
+
+.userStats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  gap: 5vw;
+}
+
+.userStat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

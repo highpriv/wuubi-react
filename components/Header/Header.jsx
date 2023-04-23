@@ -330,7 +330,7 @@ export default function Header() {
                 fontWeight: "bold",
               }}
             >
-              <Icons.SearchIcon />
+              <Icons.ExploreIcon />
             </Components.IconButton>
             <Components.Tooltip title="Open settings">
               <Components.IconButton
