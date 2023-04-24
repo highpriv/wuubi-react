@@ -23,6 +23,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import ExploreIcon from "@mui/icons-material/Explore";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import MailIcon from "@mui/icons-material/Mail";
 export {
   FacebookIcon,
   InstagramIcon,
@@ -49,4 +51,6 @@ export {
   VisibilityOff,
   AlternateEmailIcon,
   ExploreIcon,
+  PersonAddAlt1Icon,
+  MailIcon,
 };

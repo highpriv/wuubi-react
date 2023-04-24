@@ -70,3 +70,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.userActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  gap: 2%;
+}
+
+.userContent {
+  width: 70%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 5vh;
+}
