@@ -15,11 +15,12 @@ export default function loginPage() {
     event.preventDefault();
   };
 
-  const hadleLogin = async () => {
+  const handleLogin = async () => {
     const result = await signIn("credentials", {
       email,
       password,
-      redirect: false,
+      redirect: true,
+      callbackUrl: "/",
     });
   };
 
@@ -111,7 +112,7 @@ export default function loginPage() {
             <Components.Button
               variant="contained"
               color="primary"
-              onClick={hadleLogin}
+              onClick={handleLogin}
               className={styles.button}
             >
               Giriş Yap

@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
+import { env } from "process";
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -9,7 +10,7 @@ export const authOptions = {
       name: "Credentials",
 
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
@@ -21,7 +22,6 @@ export const authOptions = {
         });
 
         const user = res.data;
-
         if (user.token) {
           return user;
         } else {
@@ -29,21 +29,22 @@ export const authOptions = {
         }
       },
     }),
-    // ...add more providers here
   ],
 
-  session: {
-    strategy: "jwt",
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token from a provider.
+      session.user = token;
+
+      return session;
+    },
   },
 
   pages: {
     signIn: "/login",
-  },
-
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      return "/u/" + user.token;
-    },
   },
 };
 
