@@ -1,15 +1,39 @@
 import { useState } from "react";
 import styles from "./Register.module.css";
 import Components from "../../components";
+import axios from "axios";
 const Icons = require("../../assets/Icons");
+import { signIn } from "next-auth/react";
 
 export default function registerPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    name: "",
+    lastname: "",
+    username: "",
+  });
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const handleRegister = async () => {
+    const response = await axios.post(
+      "http://localhost:3000/register",
+      formData
+    );
+
+    if (response.data.token) {
+      const result = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: true,
+      });
+    }
   };
   return (
     <div className={styles.container}>
@@ -44,6 +68,9 @@ export default function registerPage() {
               </Components.InputLabel>
               <Components.OutlinedInput
                 id="outlined-adornment-email"
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 label="Email"
                 variant="outlined"
                 className={styles.input}
@@ -54,6 +81,23 @@ export default function registerPage() {
                 Adınız
               </Components.InputLabel>
               <Components.OutlinedInput
+                id="outlined-adornment-email"
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                label="Email"
+                variant="outlined"
+                className={styles.input}
+              />
+            </Components.FormControl>
+            <Components.FormControl sx={{ marginTop: "5%" }}>
+              <Components.InputLabel htmlFor="outlined-adornment-email">
+                Soyadınız
+              </Components.InputLabel>
+              <Components.OutlinedInput
+                onChange={(e) =>
+                  setFormData({ ...formData, lastname: e.target.value })
+                }
                 id="outlined-adornment-email"
                 label="Email"
                 variant="outlined"
@@ -68,6 +112,9 @@ export default function registerPage() {
                 id="outlined-adornment-email"
                 label="Email"
                 variant="outlined"
+                onChange={(e) =>
+                  setFormData({ ...formData, username: e.target.value })
+                }
                 className={styles.input}
               />
             </Components.FormControl>
@@ -76,6 +123,9 @@ export default function registerPage() {
                 Password
               </Components.InputLabel>
               <Components.OutlinedInput
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -113,6 +163,9 @@ export default function registerPage() {
               variant="contained"
               color="primary"
               className={styles.button}
+              onClick={() => {
+                handleRegister();
+              }}
             >
               Kayıt Ol
             </Components.Button>

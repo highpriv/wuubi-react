@@ -2,15 +2,27 @@ import { useState } from "react";
 import styles from "./Login.module.css";
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
+import { signIn } from "next-auth/react";
 
 export default function loginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  const hadleLogin = async () => {
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapperLogin}>
@@ -44,6 +56,7 @@ export default function loginPage() {
               </Components.InputLabel>
               <Components.OutlinedInput
                 id="outlined-adornment-email"
+                onChange={(e) => setEmail(e.target.value)}
                 label="Email"
                 variant="outlined"
                 endAdornment={
@@ -61,6 +74,7 @@ export default function loginPage() {
               <Components.OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
+                onChange={(e) => setPassword(e.target.value)}
                 endAdornment={
                   <Components.InputAdornment position="end">
                     <Components.IconButton
@@ -97,6 +111,7 @@ export default function loginPage() {
             <Components.Button
               variant="contained"
               color="primary"
+              onClick={hadleLogin}
               className={styles.button}
             >
               Giriş Yap
@@ -104,6 +119,7 @@ export default function loginPage() {
             <Components.Button
               variant="outlined"
               color="primary"
+              href="/register"
               sx={{ borderRadius: "20px", padding: "2%" }}
             >
               Kayıt Ol

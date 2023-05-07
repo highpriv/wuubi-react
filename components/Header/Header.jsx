@@ -1,10 +1,13 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import Components from "../../components";
 const Icons = require("../../assets/Icons");
 
 export default function Header() {
+  const { data: session } = useSession();
+
   const [burgerMenu, setBurgerMenu] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -15,6 +18,15 @@ export default function Header() {
     setAnchorElUser(null);
   };
 
+  const handleAuthButton = (type) => {
+    if (type === "login") {
+      signIn();
+    } else if (type === "register") {
+    } else if (type === "logout") {
+      signOut();
+    }
+  };
+
   const handleOpenBurgerMenu = (event) => {
     setBurgerMenu(event.currentTarget);
   };
@@ -23,7 +35,23 @@ export default function Header() {
     setBurgerMenu(null);
   };
 
-  const settings = ["Giriş Yap", "Kayıt Ol"];
+  const settings = [
+    {
+      title: "Giriş Yap",
+      type: "login",
+      auth: false,
+    },
+    {
+      title: "Kayıt Ol",
+      type: "register",
+      auth: false,
+    },
+    {
+      title: "Çıkış Yap",
+      type: "logout",
+      auth: true,
+    },
+  ];
 
   return (
     <Components.AppBar position="static" className={styles.header}>
@@ -344,7 +372,15 @@ export default function Header() {
                   fontWeight: "bold",
                 }}
               >
-                <Icons.PersonIcon />
+                {session?.user ? (
+                  <Components.Avatar
+                    alt="Remy Sharp"
+                    src="/static/images/avatar/1.jpg"
+                    sx={{ width: 24, height: 24 }}
+                  />
+                ) : (
+                  <Icons.PersonIcon />
+                )}
               </Components.IconButton>
             </Components.Tooltip>
             <Components.Menu
@@ -363,16 +399,31 @@ export default function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <Components.MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                >
-                  <Components.Typography textAlign="center">
-                    {setting}
-                  </Components.Typography>
-                </Components.MenuItem>
-              ))}
+              {settings.map((setting) => {
+                if (session?.user && setting.auth) {
+                  return (
+                    <Components.MenuItem
+                      key={setting.type}
+                      onClick={() => handleAuthButton(setting.type)}
+                    >
+                      <Components.Typography textAlign="center">
+                        {setting.title}
+                      </Components.Typography>
+                    </Components.MenuItem>
+                  );
+                } else if (!session?.user && !setting.auth) {
+                  return (
+                    <Components.MenuItem
+                      key={setting.type}
+                      onClick={() => handleAuthButton(setting.type)}
+                    >
+                      <Components.Typography textAlign="center">
+                        {setting.title}
+                      </Components.Typography>
+                    </Components.MenuItem>
+                  );
+                }
+              })}
             </Components.Menu>
           </Components.Box>
         </Components.Toolbar>

@@ -1,13 +1,16 @@
+import { SessionProvider } from "next-auth/react";
 import Components from "../components";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, session }) => {
   return (
     <div>
-      <Components.Header />
+      <SessionProvider session={session}>
+        <Components.Header />
 
-      {children}
+        {children}
 
-      <Components.Footer />
+        <Components.Footer />
+      </SessionProvider>
     </div>
   );
 };
