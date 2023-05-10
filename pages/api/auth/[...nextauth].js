@@ -16,13 +16,16 @@ export const authOptions = {
       async authorize(credentials, req) {
         const { email, password } = credentials;
 
-        const res = await axios.post("http://localhost:3000/login", {
-          email,
-          password,
+        const res = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         });
 
-        const user = res.data;
-        if (user.token) {
+        const user = await res.json();
+        if (user) {
           return user;
         } else {
           return null;
