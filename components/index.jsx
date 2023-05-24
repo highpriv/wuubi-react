@@ -42,6 +42,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
+import Alert from "@mui/material/Alert";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogModal from "./DialogModal";
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
 /// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
@@ -49,6 +56,12 @@ import InputLabel from "@mui/material/InputLabel";
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  DialogModal,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Header,
   Footer,
   List,
@@ -93,4 +106,5 @@ export default {
   InputAdornment,
   OutlinedInput,
   InputLabel,
+  Alert,
 };

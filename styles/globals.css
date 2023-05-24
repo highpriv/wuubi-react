@@ -12,3 +12,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.MuiDialog-paper {
+  box-shadow: none !important;
+  border-radius: 5 !important;
+  background-color: transparent !important;
+  overflow: hidden !important;
+}

@@ -7,6 +7,11 @@ import { signIn } from "next-auth/react";
 
 export default function registerPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [registerError, setRegisterError] = useState({
+    status: false,
+    message: "",
+    type: "",
+  });
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,22 +27,37 @@ export default function registerPage() {
   };
 
   const handleRegister = async () => {
-    const response = await axios.post(
-      "http://localhost:3000/register",
-      formData
-    );
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/register",
+        formData
+      );
 
-    if (response.data.token) {
-      const result = await signIn("credentials", {
-        email: formData.email,
-        password: formData.password,
-        redirect: true,
+      if (response.data.token) {
+        const result = await signIn("credentials", {
+          email: formData.email,
+          password: formData.password,
+          redirect: true,
+        });
+      }
+    } catch (error) {
+      setRegisterError({
+        status: true,
+        message: error.response.data.error,
+        type: "regError",
       });
     }
   };
   return (
     <div className={styles.container}>
       <div className={styles.wrapperLogin}>
+        <Components.DialogModal
+          open={registerError.status}
+          message={registerError.message}
+          type={registerError.type}
+          setRegisterError={setRegisterError}
+        />
+
         <span className={styles.greetingIcon}>
           <Icons.EmojiPeopleIcon
             sx={{ fontSize: "54px", marginBottom: "10px" }}

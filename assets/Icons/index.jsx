@@ -25,7 +25,12 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import ExploreIcon from "@mui/icons-material/Explore";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MailIcon from "@mui/icons-material/Mail";
+import CloseIcon from "@mui/icons-material/Close";
+import ErrorIcon from "@mui/icons-material/Error";
+
 export {
+  ErrorIcon,
+  CloseIcon,
   FacebookIcon,
   InstagramIcon,
   YouTubeIcon,

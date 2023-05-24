@@ -1,0 +1,12 @@
+.dialogBox {
+  background: url("../../public/img/error-bg.png"), #f5f5f5;
+  background-position: 100% 0%;
+  background-size: 100px;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 480px) {
+  .dialogBox {
+    background: #f5f5f5 !important;
+  }
+}
