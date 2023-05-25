@@ -24,6 +24,8 @@ export default function Header() {
     } else if (type === "register") {
     } else if (type === "logout") {
       signOut();
+    } else if (type === "profile") {
+      window.location.href = "/u/" + session.user.username;
     }
   };
 
@@ -45,6 +47,16 @@ export default function Header() {
       title: "Kayıt Ol",
       type: "register",
       auth: false,
+    },
+    {
+      title: "Profil",
+      type: "profile",
+      auth: true,
+    },
+    {
+      title: "Hesabımı Düzenle",
+      type: "profile-edit",
+      auth: true,
     },
     {
       title: "Çıkış Yap",

@@ -27,9 +27,17 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MailIcon from "@mui/icons-material/Mail";
 import CloseIcon from "@mui/icons-material/Close";
 import ErrorIcon from "@mui/icons-material/Error";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export {
   ErrorIcon,
+  FavoriteIcon,
+  BookmarkIcon,
+  SettingsIcon,
+  LogoutIcon,
   CloseIcon,
   FacebookIcon,
   InstagramIcon,

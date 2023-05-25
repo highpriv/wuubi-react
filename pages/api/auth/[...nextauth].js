@@ -15,19 +15,23 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         const { email, password } = credentials;
+        let user = null;
+        try {
+          const res = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          });
 
-        const res = await fetch("http://localhost:3000/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-
-        const user = await res.json();
-        if (user) {
-          return user;
-        } else {
+          user = await res.json();
+          if (user.token) {
+            return user;
+          } else {
+            return null;
+          }
+        } catch (err) {
           return null;
         }
       },

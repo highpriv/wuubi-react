@@ -1,0 +1,30 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 95vw;
+  position: relative;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 5px;
+  min-height: 50vh;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.wrapperSidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin-right: 10vw;
+  background-color: rgb(246, 246, 246);
+  border-radius: 5px;
+}
+
+.sideMenu {
+  margin: 0 1vw 0 1vw;
+}

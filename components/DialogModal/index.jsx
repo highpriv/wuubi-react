@@ -5,6 +5,7 @@ const Icons = require("../../assets/Icons");
 export default function DialogModal(props) {
   const types = {
     regError: "Hesap Oluşturulamadı :(",
+    logError: "Giriş Yapılamadı :(",
   };
 
   const handleClose = () => {
@@ -38,16 +39,17 @@ export default function DialogModal(props) {
             borderRadius: "50%",
           }}
         >
-          {props.type === "regError" && (
-            <Icons.ErrorIcon
-              sx={{
-                justifyContent: "center",
-                width: "100%",
-                height: "100%",
-                color: "#ff6363",
-              }}
-            />
-          )}
+          {props.type === "regError" ||
+            (props.type === "logError" && (
+              <Icons.ErrorIcon
+                sx={{
+                  justifyContent: "center",
+                  width: "100%",
+                  height: "100%",
+                  color: "#ff6363",
+                }}
+              />
+            ))}
         </div>
 
         <Components.Box

@@ -8,6 +8,11 @@ export default function loginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [registerError, setRegisterError] = useState({
+    status: false,
+    message: "",
+    type: "",
+  });
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -16,17 +21,33 @@ export default function loginPage() {
   };
 
   const handleLogin = async () => {
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: true,
-      callbackUrl: "/",
-    });
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (result.error)
+        setRegisterError({
+          status: true,
+          message: "Kullanıcı adı veya şifre hatalı!",
+          type: "logError",
+        });
+      else {
+        window.location.href = "/";
+      }
+    } catch (err) {}
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapperLogin}>
+        <Components.DialogModal
+          open={registerError.status}
+          message={registerError.message}
+          type={registerError.type}
+          setRegisterError={setRegisterError}
+        />
         <span className={styles.greetingIcon}>
           <Icons.EmojiPeopleIcon
             sx={{ fontSize: "54px", marginBottom: "10px" }}
@@ -112,7 +133,7 @@ export default function loginPage() {
             <Components.Button
               variant="contained"
               color="primary"
-              onClick={handleLogin}
+              onClick={() => handleLogin()}
               className={styles.button}
             >
               Giriş Yap

@@ -5,17 +5,17 @@
   display: flex;
   padding: 20vh 0 10vh 0;
   background-color: #d8d8d8;
+  background-size: 100% 50vh;
+  background-image: url("https://picsum.photos/1200/500");
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 .coverImage {
   width: 100%;
   height: 40vh;
-  background-size: cover;
-  background-image: url("https://picsum.photos/1200/500");
-  background-position: center;
-  background-repeat: no-repeat;
+
   position: absolute;
-  top: 0;
   left: 0;
 }
 
