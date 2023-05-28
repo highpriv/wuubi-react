@@ -52,6 +52,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogModal from "./DialogModal";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Switch from "@mui/material/Switch";
+import Select from "@mui/material/Select";
+import Input from "@mui/material/Input";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
 /// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
@@ -59,6 +63,9 @@ import Switch from "@mui/material/Switch";
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  ReactQuill,
+  Input,
+  Select,
   Switch,
   DialogModal,
   ListItemIcon,
