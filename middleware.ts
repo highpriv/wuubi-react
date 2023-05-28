@@ -15,4 +15,8 @@ export async function middleware(request: NextRequest) {
   if ((currentUrl.startsWith('/login') || currentUrl.startsWith('/register')) && token) {
     return NextResponse.rewrite(new URL('/', request.url));
   }
+
+  if ((currentUrl.startsWith('/hesabini-duzenle')) && !token) {
+    return NextResponse.rewrite(new URL('/', request.url));
+  }
 }

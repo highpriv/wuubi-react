@@ -31,11 +31,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import EditIcon from "@mui/icons-material/Edit";
 
 export {
   ErrorIcon,
   FavoriteIcon,
   BookmarkIcon,
+  EditIcon,
   SettingsIcon,
   LogoutIcon,
   CloseIcon,

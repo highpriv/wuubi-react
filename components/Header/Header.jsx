@@ -24,6 +24,8 @@ export default function Header() {
     } else if (type === "register") {
     } else if (type === "logout") {
       signOut();
+    } else if (type === "profile-edit") {
+      window.location.href = "/hesabini-duzenle";
     } else if (type === "profile") {
       window.location.href = "/u/" + session.user.username;
     }

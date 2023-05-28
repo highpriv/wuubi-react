@@ -1,0 +1,84 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 95vw;
+  position: relative;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 5px;
+  min-height: 50vh;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.wrapperSidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin-right: 10vw;
+  background-color: rgb(246, 246, 246);
+  border-radius: 5px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5vh;
+}
+
+.sideMenu {
+  margin: 0 1vw 0 1vw;
+}
+
+.container {
+  width: 100%;
+  padding: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.wrapperProfile {
+  width: 100%;
+}
+
+.wrapperProfileImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  border-radius: 5px;
+  position: relative;
+}
+.wrapperProfileImageIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.wrapperNameSurname {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5vw;
+}
+
+.nameItem {
+  width: 100%;
+}

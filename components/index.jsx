@@ -51,6 +51,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogModal from "./DialogModal";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import Switch from "@mui/material/Switch";
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
 /// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
@@ -58,6 +59,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  Switch,
   DialogModal,
   ListItemIcon,
   Dialog,
