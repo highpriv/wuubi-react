@@ -32,8 +32,16 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import EditIcon from "@mui/icons-material/Edit";
+import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
+import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export {
+  DeleteIcon,
+  FormatListNumberedRtlIcon,
+  AddIcon,
+  InsertPhotoOutlinedIcon,
   ErrorIcon,
   FavoriteIcon,
   BookmarkIcon,

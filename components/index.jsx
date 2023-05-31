@@ -54,8 +54,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Switch from "@mui/material/Switch";
 import Select from "@mui/material/Select";
 import Input from "@mui/material/Input";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
+import sanitizeHtml from "sanitize-html";
+
+const HTMLRenderer = ({ htmlContent }) => {
+  const sanitizedHtml = sanitizeHtml(htmlContent);
+
+  return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+};
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
 /// It may be useful but i've seperate this file by pages. 'Cause i don't want to import all components in one file.
@@ -63,6 +71,7 @@ import "react-quill/dist/quill.snow.css";
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  HTMLRenderer,
   ReactQuill,
   Input,
   Select,

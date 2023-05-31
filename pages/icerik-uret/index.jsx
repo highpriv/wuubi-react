@@ -46,8 +46,6 @@ export default function IcerikUret() {
           component="h2"
           sx={{
             width: "100%",
-            paddingLeft: 4,
-            paddingTop: 4,
           }}
         >
           İçerik Üret
@@ -56,7 +54,7 @@ export default function IcerikUret() {
           container
           columnSpacing={{ xs: 1, sm: 2, md: 5 }}
           rowSpacing={{ xs: 1, sm: 2, md: 5 }}
-          sx={{ mt: 2, mb: 2, p: 4 }}
+          sx={{ mt: 4, mb: 2 }}
         >
           {contentTypes.map((item, index) => {
             return (

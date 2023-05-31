@@ -1,5 +1,6 @@
 import Components from "../../../components";
 import styles from "../IcerikUret.module.css";
+const Icons = require("../../../assets/icons");
 import { useState } from "react";
 export default function StandartIcerikUret() {
   const [value, setValue] = useState("");
@@ -14,7 +15,9 @@ export default function StandartIcerikUret() {
           sx={{
             width: "100%",
             fontWeight: 700,
-            fontSize: "2.5rem",
+            fontSize: "2rem",
+            textAlign: "center",
+            marginTop: 2,
           }}
         >
           Standart İçerik Üret
@@ -40,6 +43,12 @@ export default function StandartIcerikUret() {
               backgroundColor: "#e8e8e8",
               borderRadius: "5px",
               marginBottom: "2rem",
+              boxShadow: "0px 0px 5px 5px #cccccc inset",
+              "&:hover": {
+                boxShadow: "0px 0px 10px 10px #cccccc inset",
+                color: "#fff",
+                transition: "all 0.3s ease-in-out",
+              },
             }}
           >
             <div
@@ -66,13 +75,56 @@ export default function StandartIcerikUret() {
                   width: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "flex-start",
+                  alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <Components.Button variant="contained" component="label">
+                <Icons.InsertPhotoOutlinedIcon
+                  sx={{
+                    width: "5rem",
+                    height: "5rem",
+                    color: "#d3d3d3",
+                  }}
+                />
+                <Components.Button
+                  variant="contained"
+                  component="label"
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    position: "relative",
+                    marginTop: "1rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "5px solid #d3d3d3",
+                    borderRadius: "5px",
+                    backgroundColor: "#e8e8e8",
+                    boxShadow: "none",
+                    color: "#000",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    padding: "1rem",
+                    "&:hover": {
+                      backgroundColor: "#e8e8e8",
+                      boxShadow: "5px 5px 5px #d3d3d3",
+                      transition: "all 0.3s ease",
+                    },
+                  }}
+                >
                   Görsel Seç
-                  <Components.Input type="file" hidden />
+                  <Components.Input
+                    type="file"
+                    hidden
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      opacity: 0,
+                    }}
+                  />
                 </Components.Button>
               </Components.Box>
             </div>
@@ -158,6 +210,36 @@ export default function StandartIcerikUret() {
             value={value}
             onChange={setValue}
           />
+
+          <Components.Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "4rem",
+              marginBottom: "2rem",
+              flexDirection: "column",
+            }}
+          >
+            <Components.Button
+              sx={{
+                marginBottom: "1rem",
+                width: "100%",
+                height: "100%",
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "none",
+              }}
+            >
+              Taslak Olarak Kaydet
+            </Components.Button>
+            <Components.WuubiButton text="Kaydet" fullWidth>
+              İçerik Oluştur
+            </Components.WuubiButton>
+          </Components.Box>
         </Components.Box>
       </div>
     </div>
