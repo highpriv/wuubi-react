@@ -2,12 +2,21 @@ import Components from "../../../../components";
 import { useEffect, useState } from "react";
 const Icons = require("../../../../assets/icons");
 
-export default function TestResults({ testResultItems, setTestResultItems }) {
+export default function TestResults() {
   const [testResults, setTestResults] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   useEffect(() => {
-    setTestResultItems(testResults);
-  }, [testResults]);
+    const getLocalStorage = () => {
+      const localData = localStorage.getItem("testResults");
+      return localData ? JSON.parse(localData) : [];
+    };
+    setTestResults(getLocalStorage());
+  }, []);
+
+  const addToLocalStorage = (newTestResults) => {
+    localStorage.setItem("testResults", JSON.stringify(newTestResults));
+  };
 
   const [newResult, setNewResult] = useState({
     title: "",
@@ -15,21 +24,11 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
     image: "",
   });
 
-  const addTestResult = (title, description, image) => {
-    setTestResults([
-      ...testResults,
-      {
-        title,
-        description,
-        image,
-      },
-    ]);
-  };
-
   const removeTestResult = (index) => {
     const newTestResults = [...testResults];
     newTestResults.splice(index, 1);
     setTestResults(newTestResults);
+    addToLocalStorage(newTestResults);
   };
 
   const editTestResult = (index, title, description, image) => {
@@ -40,11 +39,12 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
       image,
     };
     setTestResults(newTestResults);
+    addToLocalStorage(newTestResults);
   };
   return (
     <Components.Box
       sx={{
-        mt: 1,
+        mt: 6,
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -56,13 +56,45 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
         {testResults.map((item, index) => {
           return (
             <Components.Grid item xs={12} sm={6}>
-              <Components.Card>
+              <Components.Card sx={{ position: "relative" }}>
+                {editIndex === index ? (
+                  ""
+                ) : (
+                  <Components.Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      position: "absolute",
+                      top: "0",
+                      right: "0",
+                      zIndex: "1",
+                      color: "#c4c4c4",
+                      margin: "1rem",
+                    }}
+                  >
+                    <Components.Typography
+                      variant="h6"
+                      component="h2"
+                      sx={{
+                        width: "100%",
+                        fontWeight: 700,
+                        fontSize: "1rem",
+                      }}
+                    >
+                      #{index + 1}
+                    </Components.Typography>
+                  </Components.Box>
+                )}
                 <Components.CardContent
                   sx={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
+                    marginTop: "1rem",
                   }}
                 >
                   <Components.CardMedia
@@ -87,27 +119,67 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
                       justifyContent: "center",
                     }}
                   >
-                    <Components.Typography
-                      variant="h6"
-                      component="h2"
-                      color="#474747"
-                      sx={{
-                        width: "100%",
-                        fontWeight: 700,
-                        fontSize: "1.5rem",
-                        color: "#2CCDA4",
-                      }}
-                    >
-                      {item.title}
-                    </Components.Typography>
-                    <Components.Typography
-                      variant="body1"
-                      sx={{
-                        width: "100%",
-                      }}
-                    >
-                      {item.description}
-                    </Components.Typography>
+                    {editIndex === index ? (
+                      <Components.TextField
+                        label="Başlık"
+                        variant="outlined"
+                        value={item.title}
+                        onChange={(e) => {
+                          editTestResult(
+                            index,
+                            e.target.value,
+                            item.description,
+                            item.image
+                          );
+                        }}
+                        sx={{
+                          width: "100%",
+                          marginBottom: "1rem",
+                        }}
+                      />
+                    ) : (
+                      <Components.Typography
+                        variant="h6"
+                        component="h2"
+                        color="#474747"
+                        sx={{
+                          width: "100%",
+                          fontWeight: 700,
+                          fontSize: "1.5rem",
+                          color: "#2CCDA4",
+                        }}
+                      >
+                        {item.title}
+                      </Components.Typography>
+                    )}
+                    {editIndex === index ? (
+                      <Components.TextField
+                        label="Açıklama"
+                        variant="outlined"
+                        value={item.description}
+                        onChange={(e) => {
+                          editTestResult(
+                            index,
+                            item.title,
+                            e.target.value,
+                            item.image
+                          );
+                        }}
+                        sx={{
+                          width: "100%",
+                          marginBottom: "1rem",
+                        }}
+                      />
+                    ) : (
+                      <Components.Typography
+                        variant="body1"
+                        sx={{
+                          width: "100%",
+                        }}
+                      >
+                        {item.description}
+                      </Components.Typography>
+                    )}
                   </Components.Box>
                 </Components.CardContent>
                 <Components.CardActions
@@ -116,6 +188,9 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
+                    backgroundColor: "#F5F5F5",
+                    borderRadius: "0px 0px 10px 10px",
+                    boxShadow: "1px 1px 5px 0px #0000001A inset",
                   }}
                 >
                   <Components.Button
@@ -132,22 +207,43 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
                   >
                     Sil
                   </Components.Button>
-                  <Components.Button
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      width: "100%",
-                      borderRadius: "10px",
-                      backgroundColor: "#2CCDA4",
-                      fontWeight: 700,
-                      color: "#fff",
-                      "&:hover": {
+                  {editIndex === index ? (
+                    <Components.Button
+                      key={editIndex}
+                      variant="contained"
+                      onClick={() => {
+                        setEditIndex(null);
+                      }}
+                      sx={{
+                        width: "100%",
+                        borderRadius: "10px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      Kaydet
+                    </Components.Button>
+                  ) : (
+                    <Components.Button
+                      key={editIndex}
+                      variant="contained"
+                      color="primary"
+                      onClick={() => {
+                        setEditIndex(index);
+                      }}
+                      sx={{
+                        width: "100%",
+                        borderRadius: "10px",
                         backgroundColor: "#2CCDA4",
-                      },
-                    }}
-                  >
-                    Düzenle
-                  </Components.Button>
+                        fontWeight: 700,
+                        color: "#fff",
+                        "&:hover": {
+                          backgroundColor: "#2CCDA4",
+                        },
+                      }}
+                    >
+                      Düzenle
+                    </Components.Button>
+                  )}
                 </Components.CardActions>
               </Components.Card>
             </Components.Grid>
@@ -169,6 +265,13 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
           boxSizing: "border-box",
           position: "relative",
           boxShadow: "0px 0px 5px 3px rgba(0, 0, 0, 0.25) inset",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "row",
+            lg: "row",
+            xl: "row",
+          },
         }}
       >
         <Components.Typography
@@ -236,7 +339,19 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
             />
           </Components.IconButton>
         </Components.Box>
-        <Components.Box sx={{ width: "100%" }}>
+        <Components.Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: {
+              xs: "column",
+              sm: "column",
+              md: "column",
+              lg: "column",
+              xl: "column",
+            },
+          }}
+        >
           <Components.TextField
             id="outlined-basic"
             placeholder="Sonuç Başlığı"
@@ -269,9 +384,11 @@ export default function TestResults({ testResultItems, setTestResultItems }) {
             sx={{ mt: 2 }}
             onClick={() => {
               setTestResults([...testResults, newResult]);
+              addToLocalStorage([...testResults, newResult]);
               setNewResult({
                 title: "",
                 description: "",
+                image: "",
               });
             }}
           >

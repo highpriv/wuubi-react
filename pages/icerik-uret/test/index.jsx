@@ -2,11 +2,11 @@ import { useState } from "react";
 import Components from "../../../components";
 import styles from "../IcerikUret.module.css";
 import TestResults from "./results";
+import TestQuestions from "./questions";
 const Icons = require("../../../assets/icons");
 
 export default function TestIcerikUret() {
   const [value, setValue] = useState("");
-  const [testResultItems, setTestResultItems] = useState([]);
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -273,9 +273,7 @@ export default function TestIcerikUret() {
                 Test Sonuçları
               </Components.Button>
               <Components.Button
-                key={testResultItems.length}
                 className={activeTab === 1 ? styles.active : ""}
-                disabled={testResultItems.length === 0}
                 onClick={() => {
                   setActiveTab(1);
                 }}
@@ -288,14 +286,7 @@ export default function TestIcerikUret() {
                 Test Soruları
               </Components.Button>
             </Components.Box>
-            {activeTab === 0 ? (
-              <TestResults
-                testResultItems={testResultItems}
-                setTestResultItems={setTestResultItems}
-              />
-            ) : (
-              "Sorular"
-            )}
+            {activeTab === 0 ? <TestResults /> : <TestQuestions />}
           </Components.Box>
           <Components.Box
             sx={{
