@@ -36,8 +36,10 @@ import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import QuizIcon from "@mui/icons-material/Quiz";
 
 export {
+  QuizIcon,
   DeleteIcon,
   FormatListNumberedRtlIcon,
   AddIcon,
