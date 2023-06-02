@@ -6,6 +6,9 @@ export default function TestQuestions() {
   const [testQuestions, setTestQuestions] = useState([]);
   const [testResults, setTestResults] = useState(0);
 
+  const [currentAnswer, setCurrentAnswer] = useState({});
+  const [questionAnswers, setQuestionAnswers] = useState([]);
+
   const [editIndex, setEditIndex] = useState(null);
 
   useEffect(() => {
@@ -30,6 +33,7 @@ export default function TestQuestions() {
     title: "",
     description: "",
     image: "",
+    answers: [],
   });
 
   const removeTestQuestion = (index) => {
@@ -39,12 +43,26 @@ export default function TestQuestions() {
     addToLocalStorage(newTestQuestions);
   };
 
-  const editTestQuestion = (index, title, description, image) => {
+  const editTestQuestion = (
+    index,
+    title,
+    description,
+    image,
+    answerIndex,
+    newAnswer,
+    newResult
+  ) => {
     const newTestQuestions = [...testQuestions];
     newTestQuestions[index] = {
       title,
       description,
       image,
+      answers: [
+        (newTestQuestions[index].answers[answerIndex] = {
+          title: newAnswer,
+          result: newResult,
+        }),
+      ],
     };
     setTestQuestions(newTestQuestions);
     addToLocalStorage(newTestQuestions);
@@ -190,6 +208,122 @@ export default function TestQuestions() {
                             {item.description}
                           </Components.Typography>
                         )}
+
+                        <Components.Box
+                          sx={{
+                            width: "100%",
+                            backgroundColor: "#F5F5F5",
+                            borderRadius: "10px",
+                            padding: "1rem",
+                            marginTop: "1rem",
+                          }}
+                        >
+                          <Components.Typography
+                            variant="h5"
+                            sx={{
+                              width: "100%",
+                              fontWeight: 700,
+                              marginBottom: "1rem",
+                            }}
+                          >
+                            Cevaplar
+                          </Components.Typography>
+                          {item?.answers?.map((result, indexAnswer) => {
+                            return (
+                              <Components.Box
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  margin: "1rem",
+                                  backgroundColor: "#F0C131",
+                                  borderRadius: "5px",
+                                  padding: "1rem",
+                                  justifyContent: "space-between",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <Components.Box
+                                  sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "flex-start",
+                                    width: "100%",
+                                  }}
+                                >
+                                  {editIndex === index ? (
+                                    <Components.TextField
+                                      label="Cevap"
+                                      variant="outlined"
+                                      fullWidth
+                                      value={result.title}
+                                      onChange={(e) => {
+                                        editTestQuestion(
+                                          index,
+                                          item.title,
+                                          item.description,
+                                          item.image,
+                                          indexAnswer,
+                                          e.target.value,
+                                          result.result
+                                        );
+                                      }}
+                                      sx={{
+                                        width: "100%",
+                                        marginBottom: "1rem",
+                                      }}
+                                    />
+                                  ) : (
+                                    <Components.Typography
+                                      variant="body1"
+                                      sx={{
+                                        width: "100%",
+                                      }}
+                                    >
+                                      <b>Cevap</b>: {result.title}
+                                    </Components.Typography>
+                                  )}
+                                  {editIndex === index ? (
+                                    <Components.Select
+                                      sx={{ width: "100%" }}
+                                      value={result.result}
+                                      onChange={(e) => {
+                                        editTestQuestion(
+                                          index,
+                                          item.title,
+                                          item.description,
+                                          item.image,
+                                          indexAnswer,
+                                          result.title,
+                                          e.target.value
+                                        );
+                                      }}
+                                    >
+                                      {testResults?.map((res) => {
+                                        return (
+                                          <Components.MenuItem
+                                            value={res.title}
+                                          >
+                                            {res.title}
+                                          </Components.MenuItem>
+                                        );
+                                      })}
+                                    </Components.Select>
+                                  ) : (
+                                    <Components.Typography
+                                      variant="body1"
+                                      sx={{
+                                        width: "100%",
+                                      }}
+                                    >
+                                      <b>Sonuç</b>: {result.result}
+                                    </Components.Typography>
+                                  )}
+                                </Components.Box>
+                              </Components.Box>
+                            );
+                          })}
+                        </Components.Box>
                       </Components.Box>
                     </Components.CardContent>
                     <Components.CardActions
@@ -415,16 +549,77 @@ export default function TestQuestions() {
                 >
                   Cevaplar
                 </Components.Typography>
+                <Components.Box
+                  sx={{
+                    mt: 2,
+                    display: "flex",
+                    flexDirection: {
+                      xs: "column",
+                      sm: "column",
+                      md: "row",
+                      lg: "row",
+                      xl: "row",
+                    },
+                    gap: "2vw",
+                  }}
+                >
+                  {questionAnswers.map((answer, index) => {
+                    return (
+                      <Components.Box
+                        sx={{
+                          width: "100%",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          backgroundColor: "#F5F5F5",
+                          borderRadius: "10px",
+                          padding: "3vh",
+                          boxSizing: "border-box",
+                          position: "relative",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <Components.Typography
+                          variant="h6"
+                          component="h2"
+                          color="#2CCDA4"
+                        >
+                          {answer["title"]}
+                        </Components.Typography>
+                        <Components.Typography
+                          variant="h6"
+                          component="h2"
+                          color="#9b9b9b"
+                        >
+                          <b> Sonuç:</b> {answer["result"]}
+                        </Components.Typography>
+                      </Components.Box>
+                    );
+                  })}
+                </Components.Box>
                 <Components.Box sx={{ mt: 2 }}>
                   <Components.TextField
                     id="outlined-basic"
                     placeholder="Soruya Bir Yanıt Ekleyin"
                     variant="outlined"
+                    value={currentAnswer["title"]}
+                    onChange={(e) => {
+                      setCurrentAnswer({
+                        ...currentAnswer,
+                        title: e.target.value,
+                      });
+                    }}
                     fullWidth
                   />
                   <Components.Select
-                    value={""}
                     sx={{ mt: 2 }}
+                    value={currentAnswer["result"]}
+                    onChange={(e) => {
+                      setCurrentAnswer({
+                        ...currentAnswer,
+                        result: e.target.value,
+                      });
+                    }}
                     fullWidth
                     displayEmpty
                   >
@@ -446,7 +641,7 @@ export default function TestQuestions() {
                     </Components.MenuItem>
                     {testResults.map((result) => {
                       return (
-                        <Components.MenuItem value={1}>
+                        <Components.MenuItem value={result.title}>
                           {result.title}
                         </Components.MenuItem>
                       );
@@ -455,7 +650,14 @@ export default function TestQuestions() {
                   <Components.Button
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 2 }}
+                    onClick={() => {
+                      setQuestionAnswers([...questionAnswers, currentAnswer]);
+                      setCurrentAnswer({
+                        title: "",
+                        result: "",
+                      });
+                    }}
+                    sx={{ mt: 2, backgroundColor: "#2CCDA4" }}
                   >
                     Cevap Ekle
                   </Components.Button>
@@ -465,15 +667,32 @@ export default function TestQuestions() {
               <Components.Button
                 fullWidth
                 variant="contained"
-                sx={{ mt: 2 }}
+                sx={{ mt: 6 }}
                 onClick={() => {
-                  setTestQuestions([...testQuestions, newQuestion]);
-                  addToLocalStorage([...testQuestions, newQuestion]);
+                  setTestQuestions([
+                    ...testQuestions,
+                    {
+                      title: newQuestion["title"],
+                      description: newQuestion["description"],
+                      image: newQuestion["image"],
+                      answers: questionAnswers,
+                    },
+                  ]);
+                  addToLocalStorage([
+                    ...testQuestions,
+                    {
+                      title: newQuestion["title"],
+                      description: newQuestion["description"],
+                      image: newQuestion["image"],
+                      answers: questionAnswers,
+                    },
+                  ]);
                   setNewQuestion({
                     title: "",
                     description: "",
                     image: "",
                   });
+                  setQuestionAnswers([]);
                 }}
               >
                 Test Sorusu Ekle
