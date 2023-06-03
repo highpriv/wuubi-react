@@ -1,12 +1,14 @@
 import Components from "../../../../components";
 import { Fragment, useEffect, useState } from "react";
 const Icons = require("../../../../assets/icons");
+import styles from "./Questions.module.css";
 
 export default function TestQuestions() {
-  const [testQuestions, setTestQuestions] = useState([]);
   const [testResults, setTestResults] = useState(0);
 
   const [currentAnswer, setCurrentAnswer] = useState({});
+
+  const [testQuestions, setTestQuestions] = useState([]);
   const [questionAnswers, setQuestionAnswers] = useState([]);
 
   const [editIndex, setEditIndex] = useState(null);
@@ -43,41 +45,29 @@ export default function TestQuestions() {
     addToLocalStorage(newTestQuestions);
   };
 
-  const editTestQuestion = (
-    index,
-    title,
-    description,
-    image,
-    answerIndex,
-    newAnswer,
-    newResult
-  ) => {
+  const editTestQuestion = (index, editingField, newValue, answerIndex) => {
     const newTestQuestions = [...testQuestions];
-    newTestQuestions[index] = {
-      title,
-      description,
-      image,
-      answers: [
-        (newTestQuestions[index].answers[answerIndex] = {
-          title: newAnswer,
-          result: newResult,
-        }),
-      ],
-    };
+
+    switch (editingField) {
+      case "questionTitle":
+        newTestQuestions[index].title = newValue;
+        break;
+      case "questionDescription":
+        newTestQuestions[index].description = newValue;
+        break;
+      case "answerTitle":
+        newTestQuestions[index].answers[answerIndex].title = newValue;
+        break;
+      case "answerResult":
+        newTestQuestions[index].answers[answerIndex].result = newValue;
+        break;
+    }
+
     setTestQuestions(newTestQuestions);
     addToLocalStorage(newTestQuestions);
   };
   return (
-    <Components.Box
-      sx={{
-        mt: 6,
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Components.Box className={styles.testQuestionsWrapper}>
       {testResults.length > 0 ? (
         <Fragment key={testResults.length}>
           <Components.Grid container spacing={2}>
@@ -88,65 +78,24 @@ export default function TestQuestions() {
                     {editIndex === index ? (
                       ""
                     ) : (
-                      <Components.Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          textAlign: "center",
-                          position: "absolute",
-                          top: "0",
-                          right: "0",
-                          zIndex: "1",
-                          color: "#c4c4c4",
-                          margin: "1rem",
-                        }}
-                      >
+                      <Components.Box className={styles.questionItem}>
                         <Components.Typography
                           variant="h6"
                           component="h2"
-                          sx={{
-                            width: "100%",
-                            fontWeight: 700,
-                            fontSize: "1rem",
-                          }}
+                          className={styles.orderNo}
                         >
                           #{index + 1}
                         </Components.Typography>
                       </Components.Box>
                     )}
-                    <Components.CardContent
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginTop: "1rem",
-                      }}
-                    >
+                    <Components.CardContent className={styles.cardContent}>
                       <Components.CardMedia
                         src="https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg"
                         component="img"
-                        sx={{
-                          width: "20vh",
-                          height: "20vh",
-                          objectFit: "contain",
-                          objectPosition: "center",
-                          borderRadius: "5px",
-                        }}
+                        className={styles.cardMedia}
                       />
 
-                      <Components.Box
-                        sx={{
-                          width: "100%",
-                          marginLeft: "2vw",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "flex-start",
-                          justifyContent: "center",
-                        }}
-                      >
+                      <Components.Box className={styles.questionContent}>
                         {editIndex === index ? (
                           <Components.TextField
                             label="Başlık"
@@ -155,9 +104,8 @@ export default function TestQuestions() {
                             onChange={(e) => {
                               editTestQuestion(
                                 index,
-                                e.target.value,
-                                item.description,
-                                item.image
+                                "questionTitle",
+                                e.target.value
                               );
                             }}
                             sx={{
@@ -188,9 +136,8 @@ export default function TestQuestions() {
                             onChange={(e) => {
                               editTestQuestion(
                                 index,
-                                item.title,
-                                e.target.value,
-                                item.image
+                                "questionDescription",
+                                e.target.value
                               );
                             }}
                             sx={{
@@ -209,15 +156,7 @@ export default function TestQuestions() {
                           </Components.Typography>
                         )}
 
-                        <Components.Box
-                          sx={{
-                            width: "100%",
-                            backgroundColor: "#F5F5F5",
-                            borderRadius: "10px",
-                            padding: "1rem",
-                            marginTop: "1rem",
-                          }}
-                        >
+                        <Components.Box className={styles.questionAnswersText}>
                           <Components.Typography
                             variant="h5"
                             sx={{
@@ -228,44 +167,26 @@ export default function TestQuestions() {
                           >
                             Cevaplar
                           </Components.Typography>
-                          {item?.answers?.map((result, indexAnswer) => {
+                          {item?.answers?.map((answer, indexAnswer) => {
                             return (
                               <Components.Box
-                                sx={{
-                                  display: "flex",
-                                  flexDirection: "row",
-                                  margin: "1rem",
-                                  backgroundColor: "#F0C131",
-                                  borderRadius: "5px",
-                                  padding: "1rem",
-                                  justifyContent: "space-between",
-                                  alignItems: "center",
-                                }}
+                                className={styles.questionAnswerItem}
                               >
                                 <Components.Box
-                                  sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    justifyContent: "flex-start",
-                                    width: "100%",
-                                  }}
+                                  className={styles.questionAnswerItemText}
                                 >
                                   {editIndex === index ? (
                                     <Components.TextField
                                       label="Cevap"
                                       variant="outlined"
                                       fullWidth
-                                      value={result.title}
+                                      value={answer.title}
                                       onChange={(e) => {
                                         editTestQuestion(
                                           index,
-                                          item.title,
-                                          item.description,
-                                          item.image,
-                                          indexAnswer,
+                                          "answerTitle",
                                           e.target.value,
-                                          result.result
+                                          indexAnswer
                                         );
                                       }}
                                       sx={{
@@ -280,22 +201,19 @@ export default function TestQuestions() {
                                         width: "100%",
                                       }}
                                     >
-                                      <b>Cevap</b>: {result.title}
+                                      <b>Cevap</b>: {answer.title}
                                     </Components.Typography>
                                   )}
                                   {editIndex === index ? (
                                     <Components.Select
                                       sx={{ width: "100%" }}
-                                      value={result.result}
+                                      value={answer.result}
                                       onChange={(e) => {
                                         editTestQuestion(
                                           index,
-                                          item.title,
-                                          item.description,
-                                          item.image,
-                                          indexAnswer,
-                                          result.title,
-                                          e.target.value
+                                          "answerResult",
+                                          e.target.value,
+                                          indexAnswer
                                         );
                                       }}
                                     >
@@ -316,7 +234,7 @@ export default function TestQuestions() {
                                         width: "100%",
                                       }}
                                     >
-                                      <b>Sonuç</b>: {result.result}
+                                      <b>Sonuç</b>: {answer.result}
                                     </Components.Typography>
                                   )}
                                 </Components.Box>
@@ -327,27 +245,11 @@ export default function TestQuestions() {
                       </Components.Box>
                     </Components.CardContent>
                     <Components.CardActions
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: "#F5F5F5",
-                        borderRadius: "0px 0px 10px 10px",
-                        boxShadow: "1px 1px 5px 0px #0000001A inset",
-                      }}
+                      className={styles.answerActionButton}
                     >
                       <Components.Button
                         onClick={() => removeTestQuestion(index)}
                         color="error"
-                        sx={{
-                          width: "100%",
-                          borderRadius: "10px",
-                          fontWeight: 700,
-                          "&:hover": {
-                            backgroundColor: "#2CCDA4",
-                          },
-                        }}
                       >
                         Sil
                       </Components.Button>
@@ -357,11 +259,6 @@ export default function TestQuestions() {
                           variant="contained"
                           onClick={() => {
                             setEditIndex(null);
-                          }}
-                          sx={{
-                            width: "100%",
-                            borderRadius: "10px",
-                            fontWeight: 700,
                           }}
                         >
                           Kaydet
@@ -373,16 +270,6 @@ export default function TestQuestions() {
                           color="primary"
                           onClick={() => {
                             setEditIndex(index);
-                          }}
-                          sx={{
-                            width: "100%",
-                            borderRadius: "10px",
-                            backgroundColor: "#2CCDA4",
-                            fontWeight: 700,
-                            color: "#fff",
-                            "&:hover": {
-                              backgroundColor: "#2CCDA4",
-                            },
                           }}
                         >
                           Düzenle
@@ -421,22 +308,7 @@ export default function TestQuestions() {
               variant="h6"
               component="h2"
               color="#9b9b9b"
-              sx={{
-                fontWeight: 700,
-                textAlign: "center",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                position: "absolute",
-                top: "0",
-                left: "0",
-                transform: "translate(-30%, -30%)",
-                backgroundColor: "#eaeaea",
-                borderRadius: "1.5rem",
-                height: "3rem",
-                width: "3rem",
-                boxShadow: "1px 1px 5px 1px rgba(0, 0, 0, 0.25) inset",
-              }}
+              className={styles.questionNumber}
             >
               {testQuestions.length + 1}.
             </Components.Typography>
@@ -523,29 +395,12 @@ export default function TestQuestions() {
               />
               <Components.Divider sx={{ mt: 2, mb: 2 }} />
 
-              <Components.Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  backgroundColor: "#fff",
-                  flexDirection: "column",
-                  padding: "2vh",
-                  boxSizing: "border-box",
-                  borderRadius: "10px",
-                  boxShadow: "0px 0px 5px 3px rgba(0, 0, 0, 0.25) inset",
-                }}
-              >
+              <Components.Box className={styles.addNewAnswerBox}>
                 <Components.Typography
                   variant="h6"
                   component="h2"
                   color="#9b9b9b"
-                  sx={{
-                    fontWeight: 700,
-                    textAlign: "center",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
+                  className={styles.centeredText}
                 >
                   Cevaplar
                 </Components.Typography>
@@ -565,20 +420,7 @@ export default function TestQuestions() {
                 >
                   {questionAnswers.map((answer, index) => {
                     return (
-                      <Components.Box
-                        sx={{
-                          width: "100%",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          backgroundColor: "#F5F5F5",
-                          borderRadius: "10px",
-                          padding: "3vh",
-                          boxSizing: "border-box",
-                          position: "relative",
-                          flexDirection: "column",
-                        }}
-                      >
+                      <Components.Box className={styles.answerBox}>
                         <Components.Typography
                           variant="h6"
                           component="h2"
@@ -624,20 +466,7 @@ export default function TestQuestions() {
                     displayEmpty
                   >
                     <Components.MenuItem value="">
-                      <Components.Typography
-                        variant="body1"
-                        component="h2"
-                        color="#9b9b9b"
-                        sx={{
-                          fontWeight: 700,
-                          textAlign: "center",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        Bu cevap seçildiğinde hangi sonuca ulaşılacağını seçiniz
-                      </Components.Typography>
+                      Bu cevap seçildiğinde hangi sonuca ulaşılacağını seçiniz
                     </Components.MenuItem>
                     {testResults.map((result) => {
                       return (
@@ -705,14 +534,7 @@ export default function TestQuestions() {
           variant="h6"
           component="h2"
           color="#9b9b9b"
-          sx={{
-            fontWeight: 700,
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "1.5rem",
-          }}
+          className={styles.textFirstAddResult}
         >
           Lütfen önce test sonucu ekleyin.
         </Components.Typography>
