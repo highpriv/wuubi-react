@@ -37,6 +37,7 @@ import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import HotPosts from "./HotPosts/HotPosts";
 import FormControl from "@mui/material/FormControl";
+import Radio from "@mui/material/Radio";
 import Link from "next/link";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -58,6 +59,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import sanitizeHtml from "sanitize-html";
+import FilledInput from "@mui/material/FilledInput";
 
 const HTMLRenderer = ({ htmlContent }) => {
   const sanitizedHtml = sanitizeHtml(htmlContent);
@@ -71,6 +73,8 @@ const HTMLRenderer = ({ htmlContent }) => {
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  Radio,
+  FilledInput,
   HTMLRenderer,
   ReactQuill,
   Input,
