@@ -12,14 +12,7 @@ export default function AnketIcerikUret() {
     },
   ]);
 
-  const [surveyCount, setSurveyCount] = useState(1);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    const newSurvey = [...surveys];
-    const count = newSurvey.filter((item) => item.title === "");
-    setSurveyCount(count.length);
-  }, [surveys]);
 
   const [currentSurveyTitle, setCurrentSurveyTitle] = useState("");
   const [currentSurveyOption, setCurrentSurveyOption] = useState("");
@@ -57,6 +50,12 @@ export default function AnketIcerikUret() {
       setError("");
       setCurrentSurveyOption("");
     }
+  };
+
+  const removeSurvey = (index) => {
+    const newSurvey = [...surveys];
+    newSurvey.splice(index, 1);
+    setSurveys(newSurvey);
   };
 
   return (
@@ -353,6 +352,33 @@ export default function AnketIcerikUret() {
                             })}
                           </Components.Box>
                         </Components.CardActions>
+                        <Components.CardActions
+                          sx={{
+                            width: "100%",
+                            display: "flex",
+                            boxSizing: "border-box",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            backgroundColor: "#e8e8e8",
+                          }}
+                        >
+                          <Components.Button
+                            onClick={() => {
+                              removeSurvey(index);
+                            }}
+                            fullWidth
+                            sx={{
+                              backgroundColor: "#ff6666",
+                              color: "#fff",
+                              "&:hover": {
+                                backgroundColor: "#2CCDA4",
+                                color: "#fff",
+                              },
+                            }}
+                          >
+                            Sil
+                          </Components.Button>
+                        </Components.CardActions>
                       </Components.Card>
                     </Components.Grid>
                   )
@@ -387,17 +413,6 @@ export default function AnketIcerikUret() {
                 gap: "1rem",
               }}
             >
-              <Components.Typography
-                variant="h6"
-                component="h2"
-                sx={{
-                  fontWeight: 700,
-                  fontSize: "1.5rem",
-                  color: "#d3d3d3",
-                }}
-              >
-                {surveyCount}.
-              </Components.Typography>
               <Components.TextField
                 id="outlined-basic"
                 placeholder="Anket Sorusu"

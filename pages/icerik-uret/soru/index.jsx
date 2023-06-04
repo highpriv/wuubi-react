@@ -1,62 +1,30 @@
 import Components from "../../../components";
 import styles from "../IcerikUret.module.css";
 const Icons = require("../../../assets/icons");
+import SwitchComponent from "./SwitchComponent";
+
 import { useEffect, useState } from "react";
 export default function SoruIcerikUret() {
   const [value, setValue] = useState("");
 
-  const [surveys, setSurveys] = useState([
-    {
-      title: "",
-      options: [],
-    },
-  ]);
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState("");
 
-  const [surveyCount, setSurveyCount] = useState(1);
-  const [error, setError] = useState("");
+  const [currentAnswer, setCurrentAnswer] = useState({
+    title: "",
+    isCorrect: true,
+  });
+  const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
 
-  useEffect(() => {
-    const newSurvey = [...surveys];
-    const count = newSurvey.filter((item) => item.title === "");
-    setSurveyCount(count.length);
-  }, [surveys]);
+  const handleAddQuestion = () => {
+    const newQuestion = {
+      title: currentQuestion,
+      answers: currentQuestionAnswers,
+    };
 
-  const [currentSurveyTitle, setCurrentSurveyTitle] = useState("");
-  const [currentSurveyOption, setCurrentSurveyOption] = useState("");
-
-  const addSurvey = () => {
-    const newSurvey = [...surveys];
-    if (newSurvey.some((item) => item.title === currentSurveyTitle)) {
-      setError("Bu soru zaten eklenmiş.");
-    } else {
-      newSurvey.push({
-        title: currentSurveyTitle,
-        options: surveys[surveys.length - 1].options,
-      });
-      newSurvey.push({
-        title: "",
-        options: [],
-      });
-      setSurveys(newSurvey);
-      setError("");
-      setCurrentSurveyOption("");
-      setCurrentSurveyTitle("");
-    }
-  };
-
-  const addSurveyOption = (option) => {
-    const newSurvey = [...surveys];
-
-    if (newSurvey[newSurvey.length - 1].options.includes(option)) {
-      setError("Bu seçenek zaten eklenmiş.");
-    } else {
-      newSurvey[newSurvey.length - 1].options[
-        newSurvey[newSurvey.length - 1].options.length
-      ] = option;
-      setSurveys(newSurvey);
-      setError("");
-      setCurrentSurveyOption("");
-    }
+    setQuestions([...questions, newQuestion]);
+    setCurrentQuestion("");
+    setCurrentQuestionAnswers([]);
   };
 
   return (
@@ -280,7 +248,7 @@ export default function SoruIcerikUret() {
                 width: "50%",
               }}
             />
-            <Icons.PollIcon
+            <Icons.QuestionMarkIcon
               fontSize="large"
               sx={{
                 color: "#2CCDA4",
@@ -306,305 +274,196 @@ export default function SoruIcerikUret() {
           >
             Test Soruları
           </Components.Typography>
-          <Components.Box
-            sx={{ width: "100%", padding: 2, boxSizing: "border-box" }}
-          >
+
+          <Components.Box sx={{ width: "100%", marginTop: 4, marginBottom: 4 }}>
             <Components.Grid container spacing={2}>
-              {surveys.map((survey, index) => {
+              {questions.map((question, index) => {
                 return (
-                  survey.title !== "" && (
-                    <Components.Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                      <Components.Card sx={{ width: "100%" }}>
-                        <Components.CardContent>
-                          <Components.Typography
-                            sx={{
-                              fontSize: "1.5rem",
-                              fontWeight: 700,
-                              marginBottom: "1rem",
-                            }}
-                          >
-                            {survey.title}
-                          </Components.Typography>
-                        </Components.CardContent>
-                        <Components.CardActions
+                  <Components.Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+                    <Components.Card sx={{ width: "100%" }}>
+                      <Components.CardContent>
+                        <Components.Typography
                           sx={{
-                            width: "100%",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            backgroundColor: "#e8e8e8",
+                            fontSize: 14,
                           }}
+                          color="text.secondary"
+                          gutterBottom
                         >
-                          <Components.Box sx={{ width: "100%" }}>
-                            {survey.options.map((option, index) => {
-                              return (
-                                <Components.FormControlLabel
+                          {index + 1}. Soru
+                        </Components.Typography>
+                        <Components.Typography variant="h5" component="div">
+                          {question.title}
+                        </Components.Typography>
+                        <Components.Typography
+                          sx={{
+                            fontSize: 14,
+                            marginTop: "1rem",
+                          }}
+                          color="text.secondary"
+                        >
+                          Cevaplar
+                        </Components.Typography>
+                        {question.answers.map((answer, index) => {
+                          return (
+                            <Components.FormControlLabel
+                              sx={{
+                                width: "100%",
+                              }}
+                              control={
+                                <Components.Radio
                                   sx={{
-                                    width: "100%",
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    alignItems: "center",
+                                    color: answer.isCorrect
+                                      ? "#2CCDA4"
+                                      : "#ff0000",
                                   }}
-                                  value={option}
-                                  control={<Components.Radio />}
-                                  label={option}
                                 />
-                              );
-                            })}
-                          </Components.Box>
-                        </Components.CardActions>
-                      </Components.Card>
-                    </Components.Grid>
-                  )
+                              }
+                              label={answer.title}
+                            />
+                          );
+                        })}
+                      </Components.CardContent>
+                    </Components.Card>
+                  </Components.Grid>
                 );
               })}
             </Components.Grid>
           </Components.Box>
-          <Components.Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              boxShadow: "0px 0px 5px #d3d3d3",
-              borderRadius: "5px",
-              padding: "1rem",
-              boxSizing: "border-box",
-            }}
-          >
-            <Components.Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "row",
-                borderRadius: "5px",
-                padding: "1rem",
-                boxSizing: "border-box",
-                marginTop: "1rem",
-                gap: "1rem",
-              }}
-            >
-              <Components.Typography
-                variant="h6"
-                component="h2"
-                sx={{
-                  fontWeight: 700,
-                  fontSize: "1.5rem",
-                  color: "#d3d3d3",
-                }}
-              >
-                {surveyCount}.
-              </Components.Typography>
-              <Components.TextField
-                id="outlined-basic"
-                placeholder="Anket Sorusu"
-                value={currentSurveyTitle}
-                onChange={(e) => {
-                  setCurrentSurveyTitle(e.target.value);
-                }}
-                variant="outlined"
-                fullWidth
-                sx={{
-                  mt: 1,
-                }}
-              />
-            </Components.Box>
 
-            <Components.Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                flexDirection: "row",
-                padding: "1rem",
-                boxSizing: "border-box",
+          <Components.Box sx={{ width: "100%" }}>
+            <Components.TextField
+              id="outlined-basic"
+              placeholder={"Soru " + (questions.length + 1)}
+              variant="outlined"
+              value={currentQuestion}
+              onChange={(e) => setCurrentQuestion(e.target.value)}
+              fullWidth
+              sx={{ mt: 1 }}
+            />
+            <Components.TextField
+              id="outlined-basic"
+              placeholder="Cevap"
+              value={currentAnswer.title}
+              variant="outlined"
+              onChange={(e) => {
+                setCurrentAnswer({
+                  ...currentAnswer,
+                  title: e.target.value,
+                });
               }}
-            >
-              <Components.TextField
-                id="outlined-basic"
-                placeholder="Anket Seçeneği"
-                value={currentSurveyOption}
-                variant="outlined"
-                onChange={(e) => {
-                  setCurrentSurveyOption(e.target.value);
-                }}
-                fullWidth
-                sx={{
-                  mt: 1,
-                  width: "100%",
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <Components.InputAdornment position="end">
-                      <Components.Button
-                        onClick={() => {
-                          if (currentSurveyOption !== "") {
-                            addSurveyOption(currentSurveyOption);
-                          }
-                        }}
+              fullWidth
+              sx={{
+                mt: 1,
+                width: "100%",
+              }}
+              InputProps={{
+                endAdornment: (
+                  <Components.InputAdornment position="end">
+                    <Components.FormControlLabel
+                      control={
+                        <SwitchComponent
+                          checked={currentAnswer.isCorrect}
+                          onChange={(e) => {
+                            setCurrentAnswer({
+                              ...currentAnswer,
+                              isCorrect: e.target.checked,
+                            });
+                          }}
+                          sx={{ m: 1 }}
+                        />
+                      }
+                    />
+
+                    <Components.Button
+                      variant="contained"
+                      sx={{
+                        color: "#fff",
+                      }}
+                      onClick={() => {
+                        setCurrentQuestionAnswers([
+                          ...currentQuestionAnswers,
+                          currentAnswer,
+                        ]);
+                        setCurrentAnswer({
+                          title: "",
+                          isCorrect: true,
+                        });
+                      }}
+                    >
+                      Ekle
+                    </Components.Button>
+                  </Components.InputAdornment>
+                ),
+              }}
+            />
+            <Components.Box sx={{ width: "100%", marginTop: 4 }}>
+              <Components.Grid container spacing={2}>
+                {currentQuestionAnswers.map((answer, index) => {
+                  return (
+                    <Components.Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={3}
+                      lg={3}
+                      xl={3}
+                      key={index}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        gap: "1rem",
+                      }}
+                    >
+                      <Components.Box
                         sx={{
-                          backgroundColor: "#2CCDA4",
-                          color: "#fff",
-                          "&:hover": {
-                            backgroundColor: "#2CCDA4",
-                            color: "#fff",
-                          },
+                          width: "100%",
+                          backgroundColor: "#e5e5e5",
+                          borderRadius: "5px",
+                          padding: "1rem",
                         }}
                       >
-                        Ekle
-                      </Components.Button>
-                    </Components.InputAdornment>
-                  ),
-                }}
-              />
-            </Components.Box>
-            {error && (
-              <Components.Typography
-                color="error"
-                variant="caption"
-                sx={{
-                  width: "100%",
-                  ml: 6,
-                }}
-              >
-                {error}
-              </Components.Typography>
-            )}
-            <Components.Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
-                flexDirection: "column",
-                padding: "1rem",
-                boxSizing: "border-box",
-              }}
-            >
-              <Components.Typography
-                sx={{
-                  color: "#d3d3d3",
-                  fontWeight: 700,
-                  fontSize: "1.5rem",
-                  width: "100%",
-                }}
-              >
-                Anket Seçenekleri
-              </Components.Typography>
-              <Components.Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginTop: "1rem",
-                }}
-              >
-                <Components.Grid
-                  container
-                  spacing={2}
-                  rowSpacing={3}
-                  columnSpacing={3}
-                  sx={{
-                    width: "100%",
-                  }}
-                >
-                  {surveys[surveys.length - 1].options.map(
-                    (option, optionIndex) => {
-                      return (
-                        <Components.Grid
-                          item
-                          xs={12}
-                          md={4}
-                          sm={4}
-                          lg={4}
+                        <Components.FormControlLabel
                           sx={{
+                            width: "100%",
                             display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
                             flexDirection: "row",
-                            padding: "1rem",
-                            boxSizing: "border-box",
+                            alignItems: "center",
                           }}
-                        >
-                          <Components.FormControlLabel
-                            value={option}
-                            control={<Components.Radio />}
-                            label={option}
-                          />
-                        </Components.Grid>
-                      );
-                    }
-                  )}
-                </Components.Grid>
-              </Components.Box>
-              {surveys[surveys.length - 1]?.options.length > 0 ? (
-                ""
-              ) : (
-                <Components.Typography
-                  variant="caption"
-                  sx={{
-                    color: "#d3d3d3",
-                    fontWeight: 700,
-                    width: "100%",
-                  }}
-                >
-                  Henüz hiç seçenek eklenmemiş
-                </Components.Typography>
-              )}
+                          control={
+                            <Components.Radio
+                              sx={{
+                                color: answer.isCorrect ? "#2CCDA4" : "#ff0000",
+                              }}
+                            />
+                          }
+                          label={answer.title}
+                        />
+                      </Components.Box>
+                    </Components.Grid>
+                  );
+                })}
+              </Components.Grid>
             </Components.Box>
             <Components.Button
               sx={{
-                width: "100%",
-                marginTop: "1rem",
+                mt: 2,
                 backgroundColor: "#2CCDA4",
+                width: "100%",
+                padding: "1rem",
+                fontSize: "1rem",
+                marginTop: "2rem",
                 color: "#fff",
                 "&:hover": {
                   backgroundColor: "#2CCDA4",
                   color: "#fff",
                 },
               }}
-              onClick={() => {
-                if (currentSurveyTitle !== "") {
-                  addSurvey();
-                }
-              }}
+              onClick={handleAddQuestion}
             >
               Soru Ekle
             </Components.Button>
-          </Components.Box>
-          <Components.Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: "4rem",
-              marginBottom: "2rem",
-              flexDirection: "column",
-            }}
-          >
-            <Components.Button
-              sx={{
-                marginBottom: "1rem",
-                width: "100%",
-                height: "100%",
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "none",
-              }}
-            >
-              Taslak Olarak Kaydet
-            </Components.Button>
-            <Components.WuubiButton text="Kaydet" fullWidth>
-              İçerik Oluştur
-            </Components.WuubiButton>
           </Components.Box>
         </Components.Box>
       </div>

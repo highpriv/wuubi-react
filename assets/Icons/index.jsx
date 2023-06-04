@@ -38,8 +38,10 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import QuizIcon from "@mui/icons-material/Quiz";
 import PollIcon from "@mui/icons-material/Poll";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 
 export {
+  QuestionMarkIcon,
   PollIcon,
   QuizIcon,
   DeleteIcon,
