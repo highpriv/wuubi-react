@@ -39,8 +39,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import QuizIcon from "@mui/icons-material/Quiz";
 import PollIcon from "@mui/icons-material/Poll";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 export {
+  GroupsIcon,
   QuestionMarkIcon,
   PollIcon,
   QuizIcon,
