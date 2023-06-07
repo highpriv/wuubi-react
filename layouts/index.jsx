@@ -1,15 +1,19 @@
+import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
 import Components from "../components";
 
 const Layout = ({ children, session }) => {
+  const router = useRouter();
+  const isExplorePage = router.pathname === "/kesfet";
+
   return (
     <div>
       <SessionProvider session={session}>
-        <Components.Header />
+        {!isExplorePage && <Components.Header />}
 
         {children}
 
-        <Components.Footer />
+        {!isExplorePage && <Components.Footer />}
       </SessionProvider>
     </div>
   );
