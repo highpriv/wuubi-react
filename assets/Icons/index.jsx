@@ -43,8 +43,14 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import HomeIcon from "@mui/icons-material/Home";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import FlareIcon from "@mui/icons-material/Flare";
 
 export {
+  FlareIcon,
+  QuestionAnswerIcon,
+  NotificationsIcon,
   HomeIcon,
   ExpandMoreIcon,
   ExpandLessIcon,

@@ -2,24 +2,24 @@ import Components from "../..";
 import { useState } from "react";
 const Icons = require("../../../assets/Icons");
 
-export default function Populars() {
+export default function Populars({ maxCount = 5 }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const componentsList = [
     {
       id: 0,
       title: "Popüler Üyeler",
-      component: <Components.TopUsers />,
+      component: <Components.TopUsers maxCount={maxCount} />,
     },
     {
       id: 1,
       title: "Popüler İçerikler",
-      component: <Components.TopUsers />,
+      component: <Components.TopUsers maxCount={maxCount} />,
     },
     {
       id: 2,
       title: "Popüler Gruplar",
-      component: <Components.TopGroups />,
+      component: <Components.TopGroups maxCount={maxCount} />,
     },
   ];
 
@@ -30,10 +30,22 @@ export default function Populars() {
 
   return (
     <>
-      {componentsList.map((element) => {
+      {componentsList.map((element, index) => {
         if (element.id === activeTab)
           return (
-            <div>
+            <Components.Box
+              sx={{
+                height: "100%",
+                width: "20vw",
+                maxWidth: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                flexWrap: "wrap",
+                boxSizing: "border-box",
+              }}
+            >
               <Components.Typography
                 variant="h6"
                 color="#212121"
@@ -49,7 +61,7 @@ export default function Populars() {
                 </Components.IconButton>
               </Components.Typography>
               {element.component}
-            </div>
+            </Components.Box>
           );
       })}
     </>
