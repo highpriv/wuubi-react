@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Components from "../../../components";
+import Components from "@components";
 import styles from "../IcerikUret.module.css";
 import TestResults from "./results";
 import TestQuestions from "./questions";

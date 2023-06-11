@@ -1,6 +1,6 @@
 import styles from "./FeaturedPosts.module.css";
 
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 export default function FeaturedPosts() {
   return (

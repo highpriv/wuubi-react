@@ -23,6 +23,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -104,6 +105,7 @@ export default {
   TopUsers,
   TopGroups,
   CardBox,
+  CardHeader,
   Card,
   CardActions,
   CardContent,

@@ -1,4 +1,4 @@
-import Components from "../../../../components";
+import Components from "@components";
 import styles from "./EditUserProfile.module.css";
 const Icons = require("../../../../assets/Icons");
 export default function editUserProfile() {

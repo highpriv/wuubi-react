@@ -1,4 +1,4 @@
-import Components from "../../../components";
+import Components from "@components";
 import styles from "../IcerikUret.module.css";
 const Icons = require("../../../assets/icons");
 import SwitchComponent from "./SwitchComponent";

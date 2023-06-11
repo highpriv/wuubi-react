@@ -1,4 +1,4 @@
-import Components from "../../../../components";
+import Components from "@components";
 import { Fragment, useEffect, useState } from "react";
 const Icons = require("../../../../assets/icons");
 import styles from "./Questions.module.css";

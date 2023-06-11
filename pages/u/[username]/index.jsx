@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./userProfile.module.css";
-import Components from "../../../components";
+import Components from "@components";
 import UserComponents from "./components";
 const Icons = require("../../../assets/Icons");
 

@@ -1,7 +1,7 @@
 import styles from "./userSettings.module.css";
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
-import EditPages from "./Components";
+import EditPages from "./components";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 

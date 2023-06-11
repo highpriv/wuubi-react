@@ -1,6 +1,96 @@
-import Components from "../../../../components";
+import Components from "@components";
+import PageComponents from "../MainArea/components";
 const Icons = require("../../../../assets/Icons");
-export default function LeftSidebar() {
+import { signOut } from "next-auth/react";
+
+export default function LeftSidebar({ setSelectedPage }) {
+  const handleTabClick = (page) => {
+    if (page === "logout") {
+      signOut();
+    } else {
+      setSelectedPage(page);
+    }
+  };
+
+  const sidebarTabs = [
+    {
+      type: "main-menu",
+      items: [
+        {
+          name: "home",
+          component: <PageComponents.Contents />,
+          text: "Ana Sayfa",
+          icon: <Icons.HomeIcon sx={{ color: "#ededed" }} />,
+        },
+        {
+          name: "messages",
+          component: <PageComponents.Contents />,
+          text: "Mesajlar",
+          icon: <Icons.MailIcon sx={{ color: "white" }} />,
+          label: (
+            <Components.Chip
+              size="small"
+              label="9+"
+              sx={{
+                backgroundColor: "#32a3ef",
+                color: "white",
+                fontSize: "0.7rem",
+                ml: 1,
+              }}
+            />
+          ),
+        },
+        {
+          name: "profile",
+          component: <PageComponents.Contents />,
+          text: "Profilim",
+          icon: <Icons.PersonIcon sx={{ color: "white" }} />,
+        },
+        {
+          name: "logout",
+          component: <PageComponents.Contents />,
+          text: "Çıkış Yap",
+          icon: <Icons.LogoutIcon sx={{ color: "white" }} />,
+        },
+      ],
+    },
+    {
+      type: "explore",
+      items: [
+        {
+          name: "contents",
+          component: <PageComponents.Contents />,
+          text: "İçerikler",
+        },
+        {
+          name: "publications",
+          component: <PageComponents.Publications />,
+          text: "Paylaşımlar",
+        },
+        {
+          name: "groups",
+          component: <PageComponents.Publications />,
+          text: "Gruplar",
+        },
+        {
+          name: "users",
+          component: <PageComponents.Publications />,
+          text: "Üyeler",
+        },
+        {
+          name: "hastags",
+          component: <PageComponents.Publications />,
+          text: "Etiketler",
+        },
+        {
+          name: "archived-contents",
+          component: <PageComponents.Publications />,
+          text: "Arşivlediğin İçerikler",
+        },
+      ],
+    },
+  ];
+
   return (
     <Components.Box
       sx={{
@@ -107,72 +197,19 @@ export default function LeftSidebar() {
             boxSizing: "border-box",
           }}
         >
-          <Components.ListItemButton dense>
-            <Components.ListItemIcon>
-              <Icons.HomeIcon
-                sx={{
-                  color: "#ededed",
-                }}
-              />
-            </Components.ListItemIcon>
-            <Components.ListItemText primary="Anasayfa" color="white" />
-          </Components.ListItemButton>
-          <Components.ListItemButton dense>
-            <Components.ListItemIcon>
-              <Icons.MailIcon
-                sx={{
-                  color: "#ededed",
-                }}
-              />
-            </Components.ListItemIcon>
-            <Components.Box
-              sx={{
-                position: "relative",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-around",
-              }}
-            >
-              <Components.ListItemText
-                primary="Mesajlar"
-                color="#ededed"
-                sx={{
-                  color: "#ededed",
-                }}
-              />
-              <Components.Chip
-                size="small"
-                label="9+"
-                sx={{
-                  backgroundColor: "#32a3ef",
-                  color: "white",
-                  fontSize: "0.7rem",
-                  ml: 1,
-                }}
-              />
-            </Components.Box>
-          </Components.ListItemButton>
-          <Components.ListItemButton dense>
-            <Components.ListItemIcon>
-              <Icons.PersonIcon
-                sx={{
-                  color: "#ededed",
-                }}
-              />
-            </Components.ListItemIcon>
-            <Components.ListItemText primary="Profilim" color="white" />
-          </Components.ListItemButton>
-          <Components.ListItemButton dense>
-            <Components.ListItemIcon>
-              <Icons.LogoutIcon
-                sx={{
-                  color: "#ededed",
-                }}
-              />
-            </Components.ListItemIcon>
-            <Components.ListItemText primary="Çıkış Yap" color="white" />
-          </Components.ListItemButton>
+          {sidebarTabs
+            .find((tab) => tab.type === "main-menu")
+            .items.map((item, index) => (
+              <Components.ListItemButton
+                key={index}
+                onClick={() => handleTabClick(item.name)}
+                dense
+              >
+                <Components.ListItemIcon>{item.icon}</Components.ListItemIcon>
+                <Components.ListItemText primary={item.text} color="#ededed" />
+                {item.label}
+              </Components.ListItemButton>
+            ))}
         </Components.List>
       </Components.Box>
 
@@ -197,11 +234,6 @@ export default function LeftSidebar() {
           >
             Keşfet
           </Components.Typography>
-          <Icons.ExpandMoreIcon
-            sx={{
-              color: "white",
-            }}
-          />
         </Components.Box>
         <Components.List
           sx={{
@@ -214,32 +246,17 @@ export default function LeftSidebar() {
             boxSizing: "border-box",
           }}
         >
-          <Components.ListItemButton dense>
-            <Components.ListItemText primary="İçerikler" color="white" />
-          </Components.ListItemButton>
-
-          <Components.ListItemButton dense>
-            <Components.ListItemText primary="Paylaşımlar" color="white" />
-          </Components.ListItemButton>
-
-          <Components.ListItemButton dense>
-            <Components.ListItemText primary="Gruplar" color="white" />
-          </Components.ListItemButton>
-
-          <Components.ListItemButton dense>
-            <Components.ListItemText primary="Üyeler" color="white" />
-          </Components.ListItemButton>
-
-          <Components.ListItemButton dense>
-            <Components.ListItemText primary="Etiketler" color="white" />
-          </Components.ListItemButton>
-
-          <Components.ListItemButton dense>
-            <Components.ListItemText
-              primary="Arşivlediğim İçerikler"
-              color="white"
-            />
-          </Components.ListItemButton>
+          {sidebarTabs
+            .find((tab) => tab.type === "explore")
+            .items.map((item, index) => (
+              <Components.ListItemButton
+                key={index}
+                onClick={() => handleTabClick(item.name)}
+                dense
+              >
+                <Components.ListItemText primary={item.text} color="#ededed" />
+              </Components.ListItemButton>
+            ))}
         </Components.List>
       </Components.Box>
     </Components.Box>

@@ -1,4 +1,4 @@
-import Components from "../../../../../components";
+import Components from "@components";
 const Icons = require("../../../../../assets/Icons");
 
 export default function userContents() {

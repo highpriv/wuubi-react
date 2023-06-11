@@ -1,5 +1,5 @@
 import styles from "./Sidebar.module.css";
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 import { useState, useEffect } from "react";
 

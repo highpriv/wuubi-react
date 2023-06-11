@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 import { signIn } from "next-auth/react";
 

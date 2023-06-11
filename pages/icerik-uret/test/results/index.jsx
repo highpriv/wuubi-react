@@ -1,4 +1,4 @@
-import Components from "../../../../components";
+import Components from "@components";
 import { useEffect, useState } from "react";
 const Icons = require("../../../../assets/icons");
 

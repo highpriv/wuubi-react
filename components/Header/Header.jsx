@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 
 export default function Header() {

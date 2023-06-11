@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import Components from "../../../components";
+import Components from "@components";
 
 const MaterialUISwitch = styled(Components.Switch)(({ theme }) => ({
   width: 62,

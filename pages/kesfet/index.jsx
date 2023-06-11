@@ -1,8 +1,11 @@
-import PageComponents from "./components";
-import Components from "../../components";
+import PageComponents from "./pageComponents";
+import Components from "@components";
 import styles from "./Explore.module.css";
+import { useState } from "react";
 
 export default function ExplorePage() {
+  const [selectedPage, setSelectedPage] = useState("");
+
   return (
     <Components.Box
       sx={{
@@ -16,7 +19,7 @@ export default function ExplorePage() {
       }}
     >
       <Components.Box className={styles.leftSide}>
-        <PageComponents.LeftSideBar />
+        <PageComponents.LeftSideBar setSelectedPage={setSelectedPage} />
       </Components.Box>
 
       <Components.Box className={styles.mainSection}>
@@ -25,8 +28,14 @@ export default function ExplorePage() {
         </Components.Box>
 
         <Components.Box sx={{ width: "100%" }} className={styles.mainWrapper}>
-          <Components.Box className={styles.main}>
-            <PageComponents.MainArea />
+          <Components.Box
+            sx={{
+              width: "100%",
+              maxWidth: "100%",
+              boxSizing: "border-box",
+            }}
+          >
+            <PageComponents.MainArea selectedPage={selectedPage} />
           </Components.Box>
 
           <Components.Box className={styles.rightSide}>

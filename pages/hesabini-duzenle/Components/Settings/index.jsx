@@ -1,5 +1,5 @@
 import styles from "./Settings.module.css";
-import Components from "../../../../components";
+import Components from "@components";
 export default function Settings() {
   return (
     <div

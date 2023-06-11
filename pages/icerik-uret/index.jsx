@@ -1,5 +1,5 @@
 import styles from "./IcerikUret.module.css";
-import Components from "../../components";
+import Components from "@components";
 export default function IcerikUret() {
   const contentTypes = [
     {

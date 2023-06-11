@@ -46,8 +46,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import FlareIcon from "@mui/icons-material/Flare";
+import SlideshowOutlinedIcon from "@mui/icons-material/SlideshowOutlined";
 
 export {
+  SlideshowOutlinedIcon,
   FlareIcon,
   QuestionAnswerIcon,
   NotificationsIcon,

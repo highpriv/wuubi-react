@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
-import Components from "../components";
+import Components from "@components";
 
 const Layout = ({ children, session }) => {
   const router = useRouter();

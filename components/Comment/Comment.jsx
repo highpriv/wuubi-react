@@ -1,5 +1,5 @@
 import styles from "./Comment.module.css";
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 import React from "react";
 

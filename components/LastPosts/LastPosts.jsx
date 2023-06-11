@@ -1,6 +1,6 @@
 import styles from "./LastPosts.module.css";
 
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 export default function LastPosts() {
   return (

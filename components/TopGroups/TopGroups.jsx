@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TopGroups.module.css";
-import Components from "../../components";
+import Components from "@components";
 const Icons = require("../../assets/Icons");
 export default function TopGroups({ maxCount }) {
   const topGroups = [1, 2, 3, 4, 5];
