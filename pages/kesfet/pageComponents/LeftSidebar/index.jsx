@@ -78,7 +78,7 @@ export default function LeftSidebar({ setSelectedPage }) {
           text: "Üyeler",
         },
         {
-          name: "hastags",
+          name: "hashtags",
           component: <PageComponents.Publications />,
           text: "Etiketler",
         },

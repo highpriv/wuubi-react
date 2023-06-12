@@ -61,6 +61,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import sanitizeHtml from "sanitize-html";
 import FilledInput from "@mui/material/FilledInput";
+import Masonry from "@mui/lab/Masonry";
 
 const HTMLRenderer = ({ htmlContent }) => {
   const sanitizedHtml = sanitizeHtml(htmlContent);
@@ -74,6 +75,7 @@ const HTMLRenderer = ({ htmlContent }) => {
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  Masonry,
   Radio,
   FilledInput,
   HTMLRenderer,

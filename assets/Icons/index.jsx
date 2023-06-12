@@ -47,8 +47,12 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import FlareIcon from "@mui/icons-material/Flare";
 import SlideshowOutlinedIcon from "@mui/icons-material/SlideshowOutlined";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export {
+  KeyboardArrowLeftIcon,
+  KeyboardArrowRightIcon,
   SlideshowOutlinedIcon,
   FlareIcon,
   QuestionAnswerIcon,

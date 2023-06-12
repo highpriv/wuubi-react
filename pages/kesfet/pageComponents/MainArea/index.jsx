@@ -15,8 +15,16 @@ export default function MainArea({ selectedPage }) {
         return <PageComponents.Publications />;
       case "logout":
         return <PageComponents.Contents />;
+      case "contents":
+        return <PageComponents.Contents />;
       case "publications":
         return <PageComponents.Publications />;
+      case "groups":
+        return <PageComponents.Groups />;
+      case "users":
+        return <PageComponents.Users />;
+      case "hashtags":
+        return <PageComponents.Hashtags />;
       default:
         return <PageComponents.Publications />;
     }
@@ -43,6 +51,9 @@ export default function MainArea({ selectedPage }) {
             sx={{
               width: "100%",
               marginTop: "1rem",
+              height: "100%",
+              maxHeight: "100%",
+              overflow: "auto",
             }}
           >
             {pageRender()}

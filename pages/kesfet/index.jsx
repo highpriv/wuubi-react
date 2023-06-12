@@ -33,6 +33,9 @@ export default function ExplorePage() {
               width: "100%",
               maxWidth: "100%",
               boxSizing: "border-box",
+              height: "100vh",
+              maxHeight: "100vh",
+              overflow: "auto",
             }}
           >
             <PageComponents.MainArea selectedPage={selectedPage} />

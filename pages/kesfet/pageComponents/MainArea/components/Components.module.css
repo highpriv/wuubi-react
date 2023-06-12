@@ -1,0 +1,14 @@
+.wrapperBox {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-height: 100%;
+  overflow: scroll;
+  padding-bottom: 5rem;
+}
