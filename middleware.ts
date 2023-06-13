@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL('/', request.url));
   }
 
-  if (((currentUrl.startsWith('/hesabini-duzenle')) || (currentUrl.startsWith('/icerik-uret'))) && !token) {
+  if (((currentUrl.startsWith('/hesabini-duzenle')) || (currentUrl.startsWith('/icerik-uret')) || (currentUrl.startsWith('/kesfet'))) && !token) {
     return NextResponse.rewrite(new URL('/login', request.url));
   }
 }

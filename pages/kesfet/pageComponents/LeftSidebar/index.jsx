@@ -22,33 +22,14 @@ export default function LeftSidebar({ setSelectedPage }) {
           text: "Ana Sayfa",
           icon: <Icons.HomeIcon sx={{ color: "#ededed" }} />,
         },
-        {
-          name: "messages",
-          component: <PageComponents.Contents />,
-          text: "Mesajlar",
-          icon: <Icons.MailIcon sx={{ color: "white" }} />,
-          label: (
-            <Components.Chip
-              size="small"
-              label="9+"
-              sx={{
-                backgroundColor: "#32a3ef",
-                color: "white",
-                fontSize: "0.7rem",
-                ml: 1,
-              }}
-            />
-          ),
-        },
+
         {
           name: "profile",
-          component: <PageComponents.Contents />,
           text: "Profilim",
           icon: <Icons.PersonIcon sx={{ color: "white" }} />,
         },
         {
           name: "logout",
-          component: <PageComponents.Contents />,
           text: "Çıkış Yap",
           icon: <Icons.LogoutIcon sx={{ color: "white" }} />,
         },
@@ -94,12 +75,12 @@ export default function LeftSidebar({ setSelectedPage }) {
   return (
     <Components.Box
       sx={{
-        width: "100%",
+        width: "17vw",
         maxWidth: "100%",
         height: "100vh",
         backgroundColor: "#314253",
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-        padding: "10px",
+        padding: "2vw",
         boxSizing: "border-box",
       }}
     >
@@ -135,23 +116,6 @@ export default function LeftSidebar({ setSelectedPage }) {
             }}
           />
         </Components.Box>
-
-        <Components.Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
-          }}
-        >
-          <Icons.MenuIcon
-            sx={{
-              color: "white",
-              mt: 1,
-            }}
-          />
-        </Components.Box>
       </Components.Box>
       <Components.Divider
         sx={{
@@ -180,11 +144,6 @@ export default function LeftSidebar({ setSelectedPage }) {
           >
             Ana Menü
           </Components.Typography>
-          <Icons.ExpandMoreIcon
-            sx={{
-              color: "white",
-            }}
-          />
         </Components.Box>
         <Components.List
           sx={{

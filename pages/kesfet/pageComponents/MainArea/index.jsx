@@ -3,18 +3,24 @@ import Components from "@components";
 const Icons = require("../../../../assets/Icons");
 import PageComponents from "./components";
 import { useState, useEffect, use } from "react";
+import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
 
 export default function MainArea({ selectedPage }) {
+  const { data: session } = useSession();
+  const router = useRouter();
+
   const pageRender = () => {
     switch (selectedPage) {
       case "home":
-        return <PageComponents.Publications />;
-      case "messages":
-        return <PageComponents.Contents />;
+        router.push("/");
+        break;
       case "profile":
-        return <PageComponents.Publications />;
+        router.push("/u/" + session.user.username);
+        break;
       case "logout":
-        return <PageComponents.Contents />;
+        signOut();
+        break;
       case "contents":
         return <PageComponents.Contents />;
       case "publications":
@@ -26,7 +32,7 @@ export default function MainArea({ selectedPage }) {
       case "hashtags":
         return <PageComponents.Hashtags />;
       default:
-        return <PageComponents.Publications />;
+        return <PageComponents.ArchivedPosts />;
     }
   };
 

@@ -18,13 +18,24 @@ export default function ExplorePage() {
         overflow: "hidden",
       }}
     >
-      <Components.Box className={styles.leftSide}>
+      <Components.Box
+        className={styles.leftSide}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "none",
+            md: "block",
+            lg: "block",
+            xl: "block",
+          },
+        }}
+      >
         <PageComponents.LeftSideBar setSelectedPage={setSelectedPage} />
       </Components.Box>
 
       <Components.Box className={styles.mainSection}>
         <Components.Box className={styles.mainSectionTop}>
-          <PageComponents.TopBar />
+          <PageComponents.TopBar setSelectedPage={setSelectedPage} />
         </Components.Box>
 
         <Components.Box sx={{ width: "100%" }} className={styles.mainWrapper}>
@@ -41,7 +52,18 @@ export default function ExplorePage() {
             <PageComponents.MainArea selectedPage={selectedPage} />
           </Components.Box>
 
-          <Components.Box className={styles.rightSide}>
+          <Components.Box
+            className={styles.rightSide}
+            sx={{
+              display: {
+                xs: "none",
+                sm: "none",
+                md: "block",
+                lg: "block",
+                xl: "block",
+              },
+            }}
+          >
             <PageComponents.RightSidebar />
           </Components.Box>
         </Components.Box>
