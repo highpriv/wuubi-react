@@ -132,7 +132,10 @@ export default function TopBar({ setSelectedPage }) {
               return (
                 <Components.Grid item xs={12}>
                   <Components.Button
-                    onClick={() => handleTabClick(item.name)}
+                    onClick={() => {
+                      handleTabClick(item.name);
+                      handleCloseUserMenu();
+                    }}
                     sx={{ width: "100%", textTransform: "none" }}
                   >
                     <Components.Typography
@@ -163,7 +166,10 @@ export default function TopBar({ setSelectedPage }) {
               return (
                 <Components.Grid item xs={12}>
                   <Components.Button
-                    onClick={() => handleTabClick(item.name)}
+                    onClick={() => {
+                      handleTabClick(item.name);
+                      handleCloseUserMenu();
+                    }}
                     sx={{ width: "100%", textTransform: "none" }}
                   >
                     <Components.Typography
@@ -206,53 +212,68 @@ export default function TopBar({ setSelectedPage }) {
           justifyContent: "flex-end",
         }}
       >
+        <Components.IconButton
+          sx={{
+            display: {
+              xs: "block",
+              sm: "block",
+              md: "none",
+              lg: "none",
+              xl: "none",
+            },
+          }}
+        >
+          <Icons.NotificationsIcon />
+        </Components.IconButton>
+
         <Components.Button
           size="small"
           sx={{
             color: "#606060",
             textTransform: "none",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "flex",
+              lg: "flex",
+              xl: "flex",
+            },
           }}
         >
           <Icons.NotificationsIcon sx={{ mr: 1 }} />
-          <Components.Typography
-            variant="body1"
-            color="#606060"
-            sx={{
-              display: {
-                xs: "none",
-                sm: "none",
-                md: "block",
-                lg: "block",
-                xl: "block",
-              },
-            }}
-          >
-            Bildirimler
-          </Components.Typography>
+          <span>Bildirimler</span>
         </Components.Button>
+
+        <Components.IconButton
+          sx={{
+            display: {
+              xs: "block",
+              sm: "block",
+              md: "none",
+              lg: "none",
+              xl: "none",
+            },
+          }}
+        >
+          <Icons.QuestionAnswerIcon />
+        </Components.IconButton>
+
         <Components.Button
           size="small"
           sx={{
             color: "#606060",
             textTransform: "none",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "flex",
+              lg: "flex",
+              xl: "flex",
+            },
           }}
         >
           <Icons.QuestionAnswerIcon sx={{ mr: 1 }} />
-          <Components.Typography
-            variant="body1"
-            color="#606060"
-            sx={{
-              display: {
-                xs: "none",
-                sm: "none",
-                md: "block",
-                lg: "block",
-                xl: "block",
-              },
-            }}
-          >
-            Mesajlar
-          </Components.Typography>
+          <span>Mesajlar</span>
         </Components.Button>
         <Components.Button size="small">
           <Components.Avatar

@@ -49,8 +49,12 @@ import FlareIcon from "@mui/icons-material/Flare";
 import SlideshowOutlinedIcon from "@mui/icons-material/SlideshowOutlined";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import TagIcon from "@mui/icons-material/Tag";
 
 export {
+  TagIcon,
+  MoreHorizIcon,
   KeyboardArrowLeftIcon,
   KeyboardArrowRightIcon,
   SlideshowOutlinedIcon,

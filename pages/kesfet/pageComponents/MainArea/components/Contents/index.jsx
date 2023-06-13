@@ -6,7 +6,16 @@ export default function Contents() {
 
   return (
     <Components.Box className={styles.wrapperBox}>
-      <Components.Masonry columns={3} spacing={2}>
+      <Components.Masonry
+        columns={{
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 3,
+          xl: 3,
+        }}
+        spacing={2}
+      >
         {contentItems.map((item, index) => (
           <Components.Card key={index}>
             <Components.CardHeader
