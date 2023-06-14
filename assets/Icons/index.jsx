@@ -51,8 +51,18 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import TagIcon from "@mui/icons-material/Tag";
+import TextsmsIcon from "@mui/icons-material/Textsms";
+import WorkspacesRoundedIcon from "@mui/icons-material/WorkspacesRounded";
+import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 
 export {
+  SpaceDashboardIcon,
+  CalendarMonthRoundedIcon,
+  LocalPhoneRoundedIcon,
+  WorkspacesRoundedIcon,
+  TextsmsIcon,
   TagIcon,
   MoreHorizIcon,
   KeyboardArrowLeftIcon,

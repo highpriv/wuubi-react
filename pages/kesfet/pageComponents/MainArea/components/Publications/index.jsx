@@ -2,10 +2,10 @@ import Components from "@components";
 import styles from "../Components.module.css";
 const Icons = require("../../../../../../assets/Icons");
 export default function Publications() {
-  const cardImgages = [1, 2, 3, 4];
+  const cardImages = [1, 2, 3, 4];
 
   const cardImageColGrid = (index) => {
-    switch (cardImgages.length) {
+    switch (cardImages.length) {
       case 1:
         return 12;
       case 2:
@@ -85,7 +85,7 @@ export default function Publications() {
             }}
           >
             <Components.Grid container spacing={1}>
-              {cardImgages.map((item, index) => {
+              {cardImages.map((item, index) => {
                 return (
                   <Components.Grid item xs={cardImageColGrid(index)}>
                     <Components.CardMedia
@@ -149,7 +149,7 @@ export default function Publications() {
             }}
           >
             <Components.Grid container spacing={1}>
-              {cardImgages.map((item, index) => {
+              {cardImages.map((item, index) => {
                 return (
                   <Components.Grid item xs={cardImageColGrid(index)}>
                     <Components.CardMedia

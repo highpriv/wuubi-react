@@ -63,6 +63,14 @@ import sanitizeHtml from "sanitize-html";
 import FilledInput from "@mui/material/FilledInput";
 import Masonry from "@mui/lab/Masonry";
 import AvatarGroup from "@mui/material/AvatarGroup";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import MenuList from "@mui/material/MenuList";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 
 const HTMLRenderer = ({ htmlContent }) => {
   const sanitizedHtml = sanitizeHtml(htmlContent);
@@ -76,6 +84,14 @@ const HTMLRenderer = ({ htmlContent }) => {
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  SpaceDashboardIcon,
+  MenuList,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   AvatarGroup,
   Masonry,
   Radio,

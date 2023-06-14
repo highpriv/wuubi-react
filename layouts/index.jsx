@@ -4,16 +4,17 @@ import Components from "@components";
 
 const Layout = ({ children, session }) => {
   const router = useRouter();
-  const isExplorePage = router.pathname === "/kesfet";
+  const isHidden =
+    router.pathname === "/kesfet" || router.pathname === "/mesajlar";
 
   return (
     <div>
       <SessionProvider session={session}>
-        {!isExplorePage && <Components.Header />}
+        {!isHidden && <Components.Header />}
 
         {children}
 
-        {!isExplorePage && <Components.Footer />}
+        {!isHidden && <Components.Footer />}
       </SessionProvider>
     </div>
   );
