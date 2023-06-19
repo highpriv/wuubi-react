@@ -100,12 +100,26 @@ export default function Messages() {
                     color: "#e8e8e8",
                   }}
                 />
-                <Components.Typography
-                  variant="inherit"
-                  noWrap
-                  sx={{ color: "#fff", fontSize: "0.8rem" }}
+                <Components.Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    boxSizing: "border-box",
+                    flexWrap: "wrap",
+                    width: "100%",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
                 >
-                  {message.name} {message.surname}
+                  <Components.Typography
+                    variant="inherit"
+                    noWrap
+                    sx={{ color: "#fff", fontSize: "0.8rem" }}
+                  >
+                    {message.name} {message.surname}
+                  </Components.Typography>
                   <Components.Typography
                     variant="inherit"
                     noWrap
@@ -117,7 +131,7 @@ export default function Messages() {
                   >
                     {message.message}
                   </Components.Typography>
-                </Components.Typography>
+                </Components.Box>
               </Components.MenuItem>
             ))}
           </Components.MenuList>

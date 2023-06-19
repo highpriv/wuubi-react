@@ -56,8 +56,10 @@ import WorkspacesRoundedIcon from "@mui/icons-material/WorkspacesRounded";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 export {
+  AttachFileIcon,
   SpaceDashboardIcon,
   CalendarMonthRoundedIcon,
   LocalPhoneRoundedIcon,

@@ -71,11 +71,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import MenuList from "@mui/material/MenuList";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import { formatDate } from "../utils/dateUtils.js";
 
 const HTMLRenderer = ({ htmlContent }) => {
   const sanitizedHtml = sanitizeHtml(htmlContent);
 
   return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+};
+
+const dateFormatter = (date) => {
+  return formatDate(date);
 };
 
 /// ToDo: Add all components here. That way, you can import all components from one file.
@@ -84,6 +89,7 @@ const HTMLRenderer = ({ htmlContent }) => {
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  dateFormatter,
   SpaceDashboardIcon,
   MenuList,
   Table,

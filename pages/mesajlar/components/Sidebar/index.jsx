@@ -38,13 +38,13 @@ export default function SidebarMessages() {
         boxSizing: "border-box",
         scrollbarWidth: "thin",
         "&::-webkit-scrollbar": {
-          width: "0.4em",
+          width: "0.2em",
         },
         "&::-webkit-scrollbar-track": {
-          background: "#f1f1f1",
+          background: "#888",
         },
         "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "#888",
+          backgroundColor: "#f1f1f1",
         },
         "&::-webkit-scrollbar-thumb:hover": {
           background: "#555",

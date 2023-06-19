@@ -8,6 +8,9 @@ export default function Messages() {
         width: "100%",
         backgroundColor: "#131313",
         boxSizing: "border-box",
+        height: "100vh",
+        maxHeight: "100vh",
+        overflow: "hidden",
       }}
     >
       <Components.Box
