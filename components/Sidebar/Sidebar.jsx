@@ -3,7 +3,7 @@ import Components from "@components";
 const Icons = require("../../assets/Icons");
 import { useState, useEffect } from "react";
 
-export default function Sidebar() {
+export default function Sidebar({ hideSuggested }) {
   const [sidebarWidth, setSidebarWidth] = useState(undefined);
   const [sidebarTop, setSidebarTop] = useState(undefined);
   const [footerEnd, setFooterEnd] = useState(undefined);
@@ -11,6 +11,7 @@ export default function Sidebar() {
   const [documentHeight, setDocumentHeight] = useState(undefined);
 
   useEffect(() => {
+    if (hideSuggested) return;
     const sidebarEl = document
       .querySelector(".suggestedPosts")
       .getBoundingClientRect();
@@ -78,9 +79,11 @@ export default function Sidebar() {
         <Components.Populars />
       </div>
 
-      <div className="suggestedPosts">
-        <Components.SuggestedPosts />
-      </div>
+      {hideSuggested ? null : (
+        <div className="suggestedPosts">
+          <Components.SuggestedPosts />
+        </div>
+      )}
     </div>
   );
 }

@@ -374,6 +374,18 @@ export default function Header() {
             >
               <Icons.ExploreIcon />
             </Components.IconButton>
+            <Components.IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{
+                color: "#1A1A1A",
+                fontWeight: "bold",
+              }}
+            >
+              <Icons.TextsmsIcon />
+            </Components.IconButton>
             <Components.Tooltip title="Open settings">
               <Components.IconButton
                 onClick={handleOpenUserMenu}

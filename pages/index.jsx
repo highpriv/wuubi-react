@@ -63,7 +63,7 @@ export default function Home() {
             }}
           >
             <div>
-              <Components.Sidebar />
+              <Components.Sidebar hideSuggested={true} />
             </div>
           </Components.Grid>
         </Components.Grid>
