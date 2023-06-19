@@ -1,10 +1,6 @@
 const path = require("path");
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
-module.exports = withBundleAnalyzer({
+module.exports = {
   reactStrictMode: true,
   images: {
     domains: ["picsum.photos"],
@@ -14,4 +10,4 @@ module.exports = withBundleAnalyzer({
 
     return config;
   },
-});
+};

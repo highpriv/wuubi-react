@@ -1,9 +1,47 @@
 import Components from "@components";
 import styles from "../IcerikUret.module.css";
 const Icons = require("../../../assets/icons");
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function StandartIcerikUret() {
-  const [value, setValue] = useState("");
+  const [editorValue, setEditorValue] = useState("");
+  const [content, setContent] = useState({
+    title: "",
+    summary: "",
+    category: "",
+    content: "",
+    thumbnail: "",
+  });
+
+  useEffect(() => {
+    setContent({ ...content, content: editorValue });
+  }, [editorValue]);
+
+  useEffect(() => {
+    console.log(content);
+  }, [content]);
+
+  const handleContent = (field, e) => {
+    setContent({ ...content, [field]: e.target.value });
+  };
+
+  const createNewPost = () => {
+    const formData = new FormData();
+    formData.append("title", content.title);
+    formData.append("summary", content.summary);
+    formData.append("category", content.category);
+    formData.append("content", content.content);
+    formData.append("thumbnail", content.thumbnail);
+
+    $axios
+      .post("/posts", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
 
   return (
     <div className={styles.mainWrapper}>
@@ -114,7 +152,12 @@ export default function StandartIcerikUret() {
                 >
                   Görsel Seç
                   <Components.Input
+                    accept="image/*"
+                    onChange={(e) => {
+                      setContent({ ...content, thumbnail: e.target.files[0] });
+                    }}
                     type="file"
+                    name="thumbnail"
                     hidden
                     sx={{
                       width: "100%",
@@ -153,6 +196,8 @@ export default function StandartIcerikUret() {
               sx={{
                 width: "100%",
               }}
+              value={content["title"]}
+              onChange={(e) => handleContent("title", e)}
             />
 
             <Components.FormControl
@@ -161,21 +206,20 @@ export default function StandartIcerikUret() {
               }}
             >
               <Components.Select
-                value={""}
+                value={content["category"]}
                 displayEmpty
                 inputProps={{ "aria-label": "Without label" }}
+                onChange={(e) => handleContent("category", e)}
               >
-                <Components.MenuItem value="">
-                  İçerik Kategorisi 1
+                <Components.MenuItem value={""}>
+                  İçerik Kategorisi Seçiniz
                 </Components.MenuItem>
-                <Components.MenuItem value="1">
-                  İçerik Kategorisi 2
+                <Components.MenuItem value="gundem">Gündem</Components.MenuItem>
+                <Components.MenuItem value="teknoloji-ve-bilim">
+                  Teknoloji ve Bilim
                 </Components.MenuItem>
-                <Components.MenuItem value="2">
-                  İçerik Kategorisi
-                </Components.MenuItem>
-                <Components.MenuItem value="3">
-                  İçerik Kategorisi
+                <Components.MenuItem value="kultur-ve-sanat">
+                  Kültür ve Sanat
                 </Components.MenuItem>
                 <Components.MenuItem value="4">
                   İçerik Kategorisi
@@ -194,6 +238,8 @@ export default function StandartIcerikUret() {
             fullWidth
             multiline
             rows={4}
+            value={content["summary"]}
+            onChange={(e) => handleContent("summary", e)}
             sx={{
               mt: 1,
             }}
@@ -207,8 +253,8 @@ export default function StandartIcerikUret() {
               height: "500px",
             }}
             theme="snow"
-            value={value}
-            onChange={setValue}
+            value={editorValue}
+            onChange={setEditorValue}
           />
 
           <Components.Box
@@ -236,7 +282,11 @@ export default function StandartIcerikUret() {
             >
               Taslak Olarak Kaydet
             </Components.Button>
-            <Components.WuubiButton text="Kaydet" fullWidth>
+            <Components.WuubiButton
+              text="Kaydet"
+              fullWidth
+              onClick={createNewPost}
+            >
               İçerik Oluştur
             </Components.WuubiButton>
           </Components.Box>
