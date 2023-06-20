@@ -4,6 +4,7 @@ const Icons = require("../../../assets/icons");
 import { useState, useEffect } from "react";
 export default function StandartIcerikUret() {
   const [editorValue, setEditorValue] = useState("");
+  const [preview, setPreview] = useState("");
   const [content, setContent] = useState({
     title: "",
     summary: "",
@@ -80,6 +81,11 @@ export default function StandartIcerikUret() {
               justifyContent: "center",
               backgroundColor: "#e8e8e8",
               borderRadius: "5px",
+              backgroundImage: `url(${preview})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              height: "20rem",
               marginBottom: "2rem",
               boxShadow: "0px 0px 5px 5px #cccccc inset",
               "&:hover": {
@@ -89,88 +95,159 @@ export default function StandartIcerikUret() {
               },
             }}
           >
-            <div
-              style={{
-                marginTop: "2rem",
-                marginBottom: "2rem",
-              }}
-            >
-              <Components.Typography
-                variant="h6"
-                component="h2"
-                color="#d3d3d3"
-                sx={{
-                  width: "100%",
-                  fontWeight: 700,
-                  fontSize: "1.5rem",
-                }}
-              >
-                Öne Çıkan Görsel
-              </Components.Typography>
+            {preview ? (
               <Components.Box
-                sx={{
-                  mt: 1,
+                style={{
+                  position: "relative",
                   width: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  height: "100%",
                 }}
               >
-                <Icons.InsertPhotoOutlinedIcon
+                <Components.Box
                   sx={{
-                    width: "5rem",
-                    height: "5rem",
-                    color: "#d3d3d3",
-                  }}
-                />
-                <Components.Button
-                  variant="contained"
-                  component="label"
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    position: "relative",
-                    marginTop: "1rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: "5px solid #d3d3d3",
+                    position: "absolute",
+                    bottom: "16px",
+                    right: "16px",
+                    backgroundColor: "#fff",
                     borderRadius: "5px",
-                    backgroundColor: "#e8e8e8",
-                    boxShadow: "none",
-                    color: "#000",
-                    fontWeight: 700,
-                    fontSize: "1rem",
-                    padding: "1rem",
-                    "&:hover": {
-                      backgroundColor: "#e8e8e8",
-                      boxShadow: "5px 5px 5px #d3d3d3",
-                      transition: "all 0.3s ease",
-                    },
+                    boxShadow: "0px 0px 5px 5px #cccccc",
                   }}
                 >
-                  Görsel Seç
-                  <Components.Input
-                    accept="image/*"
-                    onChange={(e) => {
-                      setContent({ ...content, thumbnail: e.target.files[0] });
+                  <Components.IconButton variant="contained" component="label">
+                    <Icons.EditIcon />
+                    <Components.Input
+                      accept="image/*"
+                      onChange={(e) => {
+                        e.target.files[0] &&
+                          setPreview(URL.createObjectURL(e.target.files[0]));
+
+                        setContent({
+                          ...content,
+                          thumbnail: e.target.files[0],
+                        });
+                      }}
+                      type="file"
+                      name="thumbnail"
+                      hidden
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        opacity: 0,
+                      }}
+                    />
+                  </Components.IconButton>
+                  <Components.Divider
+                    orientation="vertical"
+                    sx={{
+                      height: "1px",
+                      backgroundColor: "#e5e5e5",
+                      width: "100%",
                     }}
-                    type="file"
-                    name="thumbnail"
-                    hidden
+                  />
+                  <Components.IconButton
+                    variant="contained"
+                    component="label"
+                    onClick={() => {
+                      setPreview("");
+                      setContent({ ...content, thumbnail: "" });
+                    }}
+                  >
+                    <Icons.DeleteIcon />
+                  </Components.IconButton>
+                </Components.Box>
+              </Components.Box>
+            ) : (
+              <Components.Box
+                style={{
+                  marginTop: "2rem",
+                  marginBottom: "2rem",
+                }}
+              >
+                <Components.Typography
+                  variant="h6"
+                  component="h2"
+                  color="#d3d3d3"
+                  sx={{
+                    width: "100%",
+                    fontWeight: 700,
+                    fontSize: "1.5rem",
+                  }}
+                >
+                  Öne Çıkan Görsel
+                </Components.Typography>
+                <Components.Box
+                  sx={{
+                    mt: 1,
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Icons.InsertPhotoOutlinedIcon
+                    sx={{
+                      width: "5rem",
+                      height: "5rem",
+                      color: "#d3d3d3",
+                    }}
+                  />
+                  <Components.Button
+                    variant="contained"
+                    component="label"
                     sx={{
                       width: "100%",
                       height: "100%",
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      opacity: 0,
+                      position: "relative",
+                      marginTop: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "5px solid #d3d3d3",
+                      borderRadius: "5px",
+                      backgroundColor: "#e8e8e8",
+                      boxShadow: "none",
+                      color: "#000",
+                      fontWeight: 700,
+                      fontSize: "1rem",
+                      padding: "1rem",
+                      "&:hover": {
+                        backgroundColor: "#e8e8e8",
+                        boxShadow: "5px 5px 5px #d3d3d3",
+                        transition: "all 0.3s ease",
+                      },
                     }}
-                  />
-                </Components.Button>
+                  >
+                    Görsel Seç
+                    <Components.Input
+                      accept="image/*"
+                      onChange={(e) => {
+                        setPreview(URL.createObjectURL(e.target.files[0]));
+
+                        setContent({
+                          ...content,
+                          thumbnail: e.target.files[0],
+                        });
+                      }}
+                      type="file"
+                      name="thumbnail"
+                      hidden
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        opacity: 0,
+                      }}
+                    />
+                  </Components.Button>
+                </Components.Box>
               </Components.Box>
-            </div>
+            )}
           </Components.Box>
 
           <Components.Box
