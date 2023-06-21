@@ -2,7 +2,17 @@ import Components from "@components";
 import styles from "../IcerikUret.module.css";
 const Icons = require("../../../assets/icons");
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAppSettings } from "@redux/actions";
+
 export default function StandartIcerikUret() {
+  const appSettings = useSelector((state) => state.appSettings);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAppSettings());
+  }, [dispatch]);
+
   const [editorValue, setEditorValue] = useState("");
   const [preview, setPreview] = useState("");
   const [content, setContent] = useState({
@@ -11,6 +21,12 @@ export default function StandartIcerikUret() {
     category: "",
     content: "",
     thumbnail: "",
+  });
+
+  const [snackStatus, setSnackStatus] = useState({
+    status: false,
+    message: "",
+    type: "",
   });
 
   useEffect(() => {
@@ -41,6 +57,13 @@ export default function StandartIcerikUret() {
       })
       .then((res) => {
         console.log(res);
+        if (res.status === 201) {
+          setSnackStatus({
+            status: true,
+            message: "İçerik başarıyla oluşturuldu.",
+            type: "success",
+          });
+        }
       });
   };
 
@@ -63,6 +86,19 @@ export default function StandartIcerikUret() {
         </Components.Typography>
       </div>
       <div>
+        <Components.Snackbar
+          open={snackStatus.status}
+          autoHideDuration={6000}
+          onClose={() => setSnackStatus({ ...snackStatus, status: false })}
+          message={snackStatus.message}
+        >
+          <Components.Alert
+            onClose={() => setSnackStatus({ ...snackStatus, status: false })}
+            severity={snackStatus.type}
+          >
+            {snackStatus.message}
+          </Components.Alert>
+        </Components.Snackbar>
         <Components.Box
           sx={{
             mt: 6,
@@ -291,19 +327,11 @@ export default function StandartIcerikUret() {
                 <Components.MenuItem value={""}>
                   İçerik Kategorisi Seçiniz
                 </Components.MenuItem>
-                <Components.MenuItem value="gundem">Gündem</Components.MenuItem>
-                <Components.MenuItem value="teknoloji-ve-bilim">
-                  Teknoloji ve Bilim
-                </Components.MenuItem>
-                <Components.MenuItem value="kultur-ve-sanat">
-                  Kültür ve Sanat
-                </Components.MenuItem>
-                <Components.MenuItem value="4">
-                  İçerik Kategorisi
-                </Components.MenuItem>
-                <Components.MenuItem value="5">
-                  İçerik Kategorisi
-                </Components.MenuItem>
+                {appSettings?.contentCategories?.map((category) => (
+                  <Components.MenuItem value={category.slug}>
+                    {category.name}
+                  </Components.MenuItem>
+                ))}
               </Components.Select>
             </Components.FormControl>
           </Components.Box>

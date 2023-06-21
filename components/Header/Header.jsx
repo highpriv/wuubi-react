@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAppSettings } from "@redux/actions";
 
 import Components from "@components";
 const Icons = require("../../assets/Icons");
 
 export default function Header() {
   const { data: session } = useSession();
+  const appSettings = useSelector((state) => state.appSettings);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAppSettings());
+  }, [dispatch]);
 
   const [burgerMenu, setBurgerMenu] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -71,7 +79,7 @@ export default function Header() {
     <Components.AppBar position="static" className={styles.header}>
       <Components.Container maxWidth="xl">
         <Components.Toolbar disableGutters>
-          <Components.Tooltip title="Open settings">
+          <Components.Tooltip>
             <Components.IconButton
               onClick={handleOpenBurgerMenu}
               size="large"
@@ -128,90 +136,17 @@ export default function Header() {
                 rowSpacing={1}
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}
               >
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Gündem
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Spor
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Teknoloji ve Bilim
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Astroloji
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Kültür ve Sanat
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Dizi ve Film
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Sağlık
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Oyun
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Yemek
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Moda
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Goygoy
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
-                <Components.Grid item xs={6} md={6}>
-                  <Components.MenuItem>
-                    <Components.Typography textAlign="center">
-                      Seyahat
-                    </Components.Typography>
-                  </Components.MenuItem>{" "}
-                </Components.Grid>
+                {appSettings?.contentCategories?.map((category) => {
+                  return (
+                    <Components.Grid item xs={6} md={6}>
+                      <Components.MenuItem>
+                        <Components.Typography textAlign="center">
+                          {category.name}
+                        </Components.Typography>
+                      </Components.MenuItem>{" "}
+                    </Components.Grid>
+                  );
+                })}
               </Components.Grid>
             </Components.Box>
             <Components.Divider sx={{ mt: 2 }} light />
@@ -386,7 +321,7 @@ export default function Header() {
             >
               <Icons.TextsmsIcon />
             </Components.IconButton>
-            <Components.Tooltip title="Open settings">
+            <Components.Tooltip>
               <Components.IconButton
                 onClick={handleOpenUserMenu}
                 size="large"

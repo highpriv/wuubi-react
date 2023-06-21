@@ -72,6 +72,7 @@ import TableRow from "@mui/material/TableRow";
 import MenuList from "@mui/material/MenuList";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import { formatDate } from "../utils/dateUtils.js";
+import Snackbar from "@mui/material/Snackbar";
 
 const HTMLRenderer = ({ htmlContent }) => {
   const sanitizedHtml = sanitizeHtml(htmlContent);
@@ -89,6 +90,7 @@ const dateFormatter = (date) => {
 /// I just want to import components that i need in index.jsx.
 
 export default {
+  Snackbar,
   dateFormatter,
   SpaceDashboardIcon,
   MenuList,
